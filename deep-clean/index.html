@@ -389,26 +389,8 @@
 
     <script defer src="/script.js"></script>
 
-    <!-- Push-notification prompt: nothing about it needs to run during the
-         initial render, so it is held until the page is idle after load. -->
-    <script>
-        (function (p, k) {
-            function start() {
-                window.EasyPusher = { publicKey: k };
-                var s = document.createElement('script');
-                s.src = p + '/app.min.js';
-                s.async = true;
-                document.head.appendChild(s);
-            }
-            function schedule() {
-                if (window.requestIdleCallback) requestIdleCallback(start, { timeout: 4000 });
-                else setTimeout(start, 2500);
-            }
-            if (document.readyState === 'complete') schedule();
-            else addEventListener('load', schedule);
-        })('https://cdn.easypusher.com', 'pk_rK6VPgeMMTYumbTNu_mej8wtL07XKKQZ');
-    </script>
-    <script>(function (s) { s.dataset.zone = '11717119', s.src = 'https://llvpn.com/tag.min.js' })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    
+    
 
 </body>
 
