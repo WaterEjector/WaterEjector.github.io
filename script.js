@@ -439,46 +439,7 @@ function updateProgress(percent, status) {
   statusText.textContent = status;
 }
 
-// --- App install CTA (Google Play) -------------------------------------
-// Rendered inside the completion modal, so it appears on all three
-// cleaning pages (home / deep-clean / vibration) at the moment the user
-// has just seen the tool work. Hidden on iOS, where a Play Store link is
-// a dead end. utm_content is tagged per cleaning mode so Play Console
-// attributes each install to the exact spot that produced it.
-const APP_ID = "com.fixmyspeaker";
-const GPLAY_ICON =
-  '<svg width="17" height="19" viewBox="0 0 256 283" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path fill="#ea4335" d="M119.553 134.916L1.06 259.061a32.14 32.14 0 0 0 47.062 19.071l133.327-75.934z"/><path fill="#fbbc04" d="M239.37 113.814L181.715 80.79l-64.898 56.95l65.162 64.28l57.216-32.67a31.345 31.345 0 0 0 0-55.537z"/><path fill="#4285f4" d="M1.06 23.487A30.6 30.6 0 0 0 0 31.61v219.327a32.3 32.3 0 0 0 1.06 8.124l122.555-120.966z"/><path fill="#34a853" d="m120.436 141.274l61.278-60.483L48.564 4.503A32.85 32.85 0 0 0 32.051 0C17.644-.028 4.978 9.534 1.06 23.399z"/></svg>';
 
-function isIOS() {
-  const ua = navigator.userAgent || "";
-  return (
-    /iPad|iPhone|iPod/.test(ua) ||
-    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
-  );
-}
-
-function playStoreUrl(content) {
-  return (
-    "https://play.google.com/store/apps/details?id=" +
-    APP_ID +
-    "&utm_source=web&utm_medium=cta&utm_campaign=install&utm_content=" +
-    encodeURIComponent(content)
-  );
-}
-
-// Install-button markup; empty string on iOS so nothing renders there.
-function appInstallMarkup(content) {
-  if (isIOS()) return "";
-  return `
-        <div class="next-step-app">
-            <span class="next-step-app-hint">Clean your speaker anytime — no browser needed</span>
-            <a href="${playStoreUrl(content)}" class="app-install-btn" id="appInstallBtn"
-                target="_blank" rel="noopener">
-                <span class="app-install-icon">${GPLAY_ICON}</span>
-                <span>Get it on Google Play</span>
-            </a>
-        </div>`;
-}
 
 // Show the next-step popup after a cleaning cycle finishes or is stopped
 function showNextStep(mode, stopped) {
@@ -511,7 +472,7 @@ function showNextStep(mode, stopped) {
             <div class="next-step-actions">
                 <a href="${step.primaryHref}" class="btn btn-primary">${step.primaryText}</a>
                 <button type="button" class="btn btn-secondary" id="runAgainBtn">${step.secondaryText}</button>
-            </div>${appInstallMarkup("modal_" + mode)}
+            </div>
         </div>
     `;
 
@@ -528,27 +489,7 @@ function showNextStep(mode, stopped) {
     hideNextStep();
     startCleaning();
   });
-  const appBtn = overlay.querySelector("#appInstallBtn");
-  if (appBtn) {
-    appBtn.addEventListener("click", () => {
-      if (typeof gtag === "function") {
-        gtag("event", "app_install_click", {
-          placement: "completion_modal",
-          from_mode: mode,
-        });
-      }
-    });
-  }
-  document.addEventListener("keydown", closeNextStepOnEscape);
-
-  document.body.appendChild(overlay);
-  document.body.classList.add("modal-open");
-
-  if (typeof gtag === "function") {
-    gtag("event", stopped ? "clean_stopped" : "clean_complete", { mode: mode });
-  }
-}
-
+  
 // Remove the next-step popup if present
 function hideNextStep() {
   const overlay = document.getElementById("nextStepPanel");
