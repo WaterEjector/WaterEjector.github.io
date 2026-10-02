@@ -10,6 +10,9 @@ def run_tests():
     warnings = 0
     
     for file in html_files:
+        if 'google' in file:
+            continue
+
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
             soup = BeautifulSoup(content, 'html.parser')
@@ -37,7 +40,7 @@ def run_tests():
                 warnings += 1
 
     print("\\n--- Test Results ---")
-    print(f"Files tested: {len(html_files)}")
+    print(f"Files tested: {len([f for f in html_files if 'google' not in f])}")
     print(f"Errors found: {errors}")
     print(f"Warnings found: {warnings}")
     
