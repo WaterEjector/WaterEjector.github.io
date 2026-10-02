@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description"
+        content="Deep dust clean for your phone speaker. Frequency sweep from 200Hz to 1500Hz shakes loose dust, lint and debris to restore clear sound.">
+    <title>Deep Dust Clean - Speaker Dust Removal Tool | WaterEjector</title>
+    <link rel="canonical" href="https://waterejector.github.io/deep-clean/">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#8B5CF6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/style.css">
+    <!-- Self-hosted Inter (variable, 400-800). Preloaded so it starts
+         downloading alongside the CSS instead of after it. -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000"
+        crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js). The library is 165KB and competes with first
+         paint, so the calls are queued into dataLayer immediately and the
+         library itself is fetched once the page has painted (or sooner, on
+         the first user interaction). No events are lost — dataLayer buffers
+         them until gtag.js arrives. -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        (function () {
+            var done = false;
+            function load() {
+                if (done) return;
+                done = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+                document.head.appendChild(s);
+            }
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+                addEventListener(e, load, { once: true, passive: true });
+            });
+            if (document.readyState === 'complete') load();
+            else addEventListener('load', load);
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.68629 2 6 4.68629 6 8V24C6 27.3137 8.68629 30 12 30H20C23.3137 30 26 27.3137 26 24V8C26 4.68629 23.3137 2 20 2H12ZM16 7C17.6569 7 19 8.34315 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 8.34315 14.3431 7 16 7ZM16 16C19.3137 16 22 18.6863 22 22C22 25.3137 19.3137 28 16 28C12.6863 28 10 25.3137 10 22C10 18.6863 12.6863 16 16 16ZM16 19C14.3431 19 13 20.3431 13 22C13 23.6569 14.3431 25 16 25C17.6569 25 19 23.6569 19 22C19 20.3431 17.6569 19 16 19Z" fill="currentColor"/></svg>
+                    <span>WaterEjector</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/deep-clean/" class="nav-link active">Deep Clean</a></li>
+                    <li><a href="/vibration/" class="nav-link">Vibration</a></li>
+                    <li><a href="/#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="/#benefits" class="nav-link">Benefits</a></li>
+                    <li><a href="/#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="/about/" class="nav-link">About</a></li>
+                    <li><a href="/contact/" class="nav-link">Contact</a></li>
+                
+                    <li>
+                        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                            <!-- Icon injected by JS -->
+                        </button>
+                    </li>
+</ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Tool -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Deep Dust Clean</h1>
+                <p class="hero-subtitle">A powerful frequency sweep that shakes loose dust, lint and debris trapped in
+                    your speaker grill.</p>
+            </div>
+
+            <!-- Speaker Cleaner Tool -->
+            <div class="tool-container">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h2>Dust Removal Tool</h2>
+                        <p>Tap play to start the 60-second frequency sweep</p>
+                    </div>
+
+                    <!-- Mode Selection -->
+                    <div class="mode-selection">
+                        <a href="/" class="mode-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                            </svg>
+                            <span>Eject Water</span>
+                        </a>
+                        <button class="mode-btn active" data-mode="dust">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                            <span>Remove Dust</span>
+                        </button>
+                        <a href="/vibration/" class="mode-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="2" width="6" height="20" rx="2"></rect>
+                                <path d="M3 8v8M6 5v14M18 5v14M21 8v8"></path>
+                            </svg>
+                            <span>Vibration</span>
+                        </a>
+                    </div>
+
+                    <!-- Speaker Selection -->
+                    <div class="speaker-selection">
+                        <button class="speaker-btn active" data-speaker="both">
+                            <span>Both Speakers</span>
+                        </button>
+                        <button class="speaker-btn" data-speaker="left">
+                            <span>Left Speaker</span>
+                        </button>
+                        <button class="speaker-btn" data-speaker="right">
+                            <span>Right Speaker</span>
+                        </button>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="progressPercent">0%</span>
+                            <span id="statusText">Ready to clean</span>
+                        </div>
+                    </div>
+
+                    <!-- Control Buttons -->
+                    <div class="control-buttons">
+                        <button class="btn btn-primary" id="startBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            <span>Start Cleaning</span>
+                        </button>
+                        <button class="btn btn-secondary" id="stopBtn" disabled>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="6" y="6" width="12" height="12" rx="2" />
+                            </svg>
+                            <span>Stop</span>
+                        </button>
+                    </div>
+
+                    <!-- Volume Warning -->
+                    <div class="warning-box">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                            </path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <p><strong>Important:</strong> Turn volume to maximum and hold your phone with the speaker
+                            facing down so loosened dust falls out.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad: below tool -->
+            <div class="ad-container under-tool">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000"
+                    data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Deep Clean Works -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How the Deep Dust Clean Works</h2>
+                <p>Six frequencies, one pass — from deep bass to high treble</p>
+                <!-- Ad: below tool -->
+                <div class="ad-container under-tool">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000"
+                        data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
+                        data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12h3l3-9 4 18 3-9h3"></path>
+                        </svg>
+                    </div>
+                    <h3>Frequency Sweep</h3>
+                    <p>Unlike the standard water eject tone, the deep clean cycles through six frequencies from 200Hz
+                        up to 1500Hz, spending ten seconds on each. This band is where the speaker diaphragm moves the
+                        most, so each step physically shakes debris of a different size loose from the speaker mesh.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <h3>When to Use It</h3>
+                    <p>Run a deep clean when your speaker sounds muffled or quieter than it used to, when calls sound
+                        distant, or after the standard water eject didn't fully restore clarity. Pocket lint and dust
+                        build up gradually, so a monthly pass keeps sound crisp.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6L9 17l-5-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Getting the Best Result</h3>
+                    <p>Set volume to maximum, remove any case, and point the speaker grill downward. For stubborn
+                        build-up, run the sweep two or three times back to back — each pass shakes out a little more.
+                        Finish with a soft dry brush across the grill if dust is visible.</p>
+                </div>
+            </div>
+            <!-- Ad: below content -->
+            <div class="ad-container under-tool">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000"
+                    data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
+                    data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance Guide -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Keep Every Speaker in Your Life Clean</h2>
+                <div class="ad-container under-tool">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000"
+                        data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
+                        data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+                <p>Maintenance tips for your phone, earbuds and accessories</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                            <path
+                                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Earbuds and Bluetooth Speakers Too</h3>
+                    <p>Wireless earbuds collect ear wax and pocket lint even faster than phone speakers. Connect your
+                        TWS earbuds or Bluetooth speaker to this page and run the same frequency sweep — the tones
+                        play through whatever device is connected, shaking dust out of the driver mesh. A monthly pass
+                        keeps earbuds sounding new and saves replacing a pair that just needed cleaning.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2"></rect>
+                            <path d="M12 18h.01"></path>
+                        </svg>
+                    </div>
+                    <h3>Prevent Dust Before It Settles</h3>
+                    <p>Most speaker dust comes from pockets and bags. A case with raised edges around the speaker
+                        cutouts, keeping the phone in a separate pocket from keys and tissues, and an occasional pass
+                        with a soft dry brush over the grill all slow the build-up. Avoid compressed air and pins —
+                        both push debris deeper into the mesh and can tear the speaker membrane.</p>
+                </div>
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>When the Speaker Needs Repair</h3>
+                    <p>If audio is still low or crackly after several deep cleans, the speaker itself may be worn out
+                        — drivers degrade after years of maximum-volume use. Phone speaker replacement at a service
+                        centre usually costs ₹800–₹3,000 depending on the model, which is worth weighing against the
+                        phone's age. Get a quote before assuming you need a new phone; a speaker swap is one of the
+                        cheapest repairs there is.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad: end of content -->
+    <div class="container">
+        <div class="ad-container-section">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000"
+                data-ad-slot="5532898439" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Speaker Still Not Clear?</h2>
+                <p>If sound is still muffled after a deep clean, trapped water may be the cause — run the standard
+                    water eject or try vibration mode</p>
+                <a href="/" class="btn btn-primary btn-large">Run Water Eject</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WaterEjector</h3>
+                    <p>Professional speaker cleaner tool using advanced sound wave technology to eject water and remove
+                        dust from your device speakers.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/deep-clean/">Deep Dust Clean</a></li>
+                        <li><a href="/vibration/">Vibration Mode</a></li>
+                        <li><a href="/about/">About Us</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service/">Terms of Service</a></li>
+                        <li><a href="/disclaimer/">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#how-it-works">How It Works</a></li>
+                        <li><a href="/#benefits">Benefits</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WaterEjector. All rights reserved. | Supported by <a href="https://www.devdeskapp.com/" target="_blank" rel="noopener" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">DevDesk App</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="/script.js"></script>
+
+    <!-- Push-notification prompt: nothing about it needs to run during the
+         initial render, so it is held until the page is idle after load. -->
+    <script>
+        (function (p, k) {
+            function start() {
+                window.EasyPusher = { publicKey: k };
+                var s = document.createElement('script');
+                s.src = p + '/app.min.js';
+                s.async = true;
+                document.head.appendChild(s);
+            }
+            function schedule() {
+                if (window.requestIdleCallback) requestIdleCallback(start, { timeout: 4000 });
+                else setTimeout(start, 2500);
+            }
+            if (document.readyState === 'complete') schedule();
+            else addEventListener('load', schedule);
+        })('https://cdn.easypusher.com', 'pk_rK6VPgeMMTYumbTNu_mej8wtL07XKKQZ');
+    </script>
+    <script>(function (s) { s.dataset.zone = '11717119', s.src = 'https://llvpn.com/tag.min.js' })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+</body>
+
+</html>

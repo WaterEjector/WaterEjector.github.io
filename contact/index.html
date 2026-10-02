@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contact WaterEjector - Get in touch with us for questions, feedback, or support regarding our speaker cleaner tool.">
+    <title>Contact Us - WaterEjector</title>
+    <link rel="canonical" href="https://waterejector.github.io/contact/">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="/style.css">
+    <!-- Self-hosted Inter (variable, 400-800). Preloaded so it starts
+         downloading alongside the CSS instead of after it. -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <!-- Google tag (gtag.js). The library is 165KB and competes with first
+         paint, so the calls are queued into dataLayer immediately and the
+         library itself is fetched once the page has painted (or sooner, on
+         the first user interaction). No events are lost — dataLayer buffers
+         them until gtag.js arrives. -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        (function () {
+            var done = false;
+            function load() {
+                if (done) return;
+                done = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+                document.head.appendChild(s);
+            }
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+                addEventListener(e, load, { once: true, passive: true });
+            });
+            if (document.readyState === 'complete') load();
+            else addEventListener('load', load);
+        })();
+    </script>
+    <style>
+        .contact-section {
+            padding: 80px 0 100px;
+            background: var(--gray-lighter);
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .contact-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-header p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-info, .contact-form {
+            background: var(--surface);
+            padding: 44px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px -15px rgba(139, 92, 246, 0.25);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info h2, .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            font-weight: 800;
+        }
+
+        .contact-info p {
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 25px;
+            padding: 24px;
+            background: var(--surface-alt);
+            border: 1px solid var(--gray-light);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .info-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-light);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.1);
+        }
+
+        .info-item svg {
+            flex-shrink: 0;
+            color: var(--primary-color);
+            margin-top: 2px;
+            filter: drop-shadow(0 2px 4px rgba(139,92,246,0.3));
+        }
+
+        .info-item div h3 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .info-item div p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--gray-light);
+            border-radius: 16px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--surface-alt);
+            color: var(--text-primary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: var(--surface);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 160px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover:not(:disabled) {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.6);
+        }
+        
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            padding: 24px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success-color);
+            border-radius: 16px;
+            color: var(--success-color);
+            margin-bottom: 25px;
+            font-weight: 600;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-header h1 { font-size: 2.2rem; }
+            .contact-info, .contact-form { padding: 24px; }
+            .info-item { padding: 18px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="/" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8 10C8 8.89543 8.89543 8 10 8H12C13.1046 8 14 8.89543 14 10V22C14 23.1046 13.1046 24 12 24H10C8.89543 24 8 23.1046 8 22V10Z"
+                            fill="currentColor" />
+                        <path
+                            d="M16 12C16 10.8954 16.8954 10 18 10C20.7614 10 23 12.2386 23 15V17C23 19.7614 20.7614 22 18 22C16.8954 22 16 21.1046 16 20V12Z"
+                            fill="currentColor" />
+                    </svg>
+                    <span>WaterEjector</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/deep-clean/" class="nav-link">Deep Clean</a></li>
+                    <li><a href="/vibration/" class="nav-link">Vibration</a></li>
+                    <li><a href="/#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="/#benefits" class="nav-link">Benefits</a></li>
+                    <li><a href="/#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="/about/" class="nav-link">About</a></li>
+                    <li><a href="/contact/" class="nav-link">Contact</a></li>
+                
+                    <li>
+                        <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                            <!-- Icon injected by JS -->
+                        </button>
+                    </li>
+</ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Get in Touch</h1>
+                <p>Have questions about our speaker cleaner tool? Need support or want to provide feedback? We're here
+                    to help!</p>
+            </div>
+
+            <div class="contact-content" style="grid-template-columns: 1fr 1.5fr; gap: 40px; margin-top: 50px;">
+                <!-- Contact Information (Left Side) -->
+                <div class="contact-info" style="display: flex; flex-direction: column; gap: 20px;">
+                    <h2>We'd love to hear from you.</h2>
+                    <p style="margin-bottom: 20px; font-size: 1.05rem;">Whether you have a question about features, pricing, need a demo, or anything else, our team is ready to answer all your questions.</p>
+
+                    <div class="info-item" style="padding: 16px; background: transparent; border: none; border-bottom: 1px solid var(--gray-light); border-radius: 0; box-shadow: none;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+                        </svg>
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--text-primary);">Chat with us</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Speak to our friendly team.</p>
+                            <p style="font-size: 0.95rem; font-weight: 600; color: var(--primary-color); margin-top: 4px;">support@devdeskapp.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" style="padding: 16px; background: transparent; border: none; border-bottom: 1px solid var(--gray-light); border-radius: 0; box-shadow: none;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--text-primary);">Technical Support</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Get help with your device.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" style="padding: 16px; background: transparent; border: none; border-radius: 0; box-shadow: none;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ef4444;">
+                            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <div>
+                            <h3 style="font-size: 1.1rem; color: var(--text-primary);">Bug Reports</h3>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary);">Found an issue? Let us know.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form (Right Side) -->
+                <div class="contact-form">
+                    <div class="success-message" id="successMessage" style="text-align: center; padding: 40px 20px;">
+                        <div style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #10b981;">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 10px;">Message Sent Successfully!</h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem;">Thank you for reaching out. We have received your message and will respond shortly.</p>
+                    </div>
+
+                    <form id="contactForm">
+                        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 24px;">Send Us a Quick Message</h2>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="name">Your Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Alex Dev">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label for="email">Your Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="alex@example.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="bug">Bug Report</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 24px;">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" required placeholder="How can we help you today?"></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13" />
+                                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                            </svg>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- FAQ Quick Link -->
+            <div class="faq-quick">
+                <h3>Looking for Quick Answers?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Many common questions are answered in our comprehensive FAQ section.
+                </p>
+                <a href="/#faq" class="btn btn-secondary">View FAQ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WaterEjector</h3>
+                    <p>Professional speaker cleaner tool using advanced sound wave technology to eject water and remove
+                        dust from your device speakers.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about/">About Us</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service/">Terms of Service</a></li>
+                        <li><a href="/disclaimer/">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#how-it-works">How It Works</a></li>
+                        <li><a href="/#benefits">Benefits</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WaterEjector. All rights reserved. | Supported by <a href="https://www.devdeskapp.com/" target="_blank" rel="noopener" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">DevDesk App</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="/script.js"></script>
+    <script>
+        // Contact form handling with FormSubmit AJAX
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value.trim(),
+                _subject: `New Contact from WaterEjector: ${document.getElementById('subject').value}`,
+                _template: 'table',
+                _captcha: 'false'
+            };
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/support@devdeskapp.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    form.reset();
+                    
+                    setTimeout(function () {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                    
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    alert('Oops! There was a problem sending your message.');
+                }
+            } catch (error) {
+                alert('Network error. Please try again later.');
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+
+</html>

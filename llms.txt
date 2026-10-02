@@ -1,0 +1,19 @@
+# WaterEjector Project
+
+This repository contains a static Single Page Application (SPA) utility called WaterEjector. It helps users eject water and remove dust from their device's speakers by playing specific high-frequency sound waves.
+
+## Technology Stack
+- HTML5
+- CSS3 (Vanilla, CSS Variables for theming)
+- JavaScript (Vanilla, Web Audio API)
+
+## Architecture
+- `index.html`: The main page with the tool interface.
+- `style.css`: Contains all styles including the premium Gold color theme.
+- `script.js`: Handles UI interactions and the Web Audio API logic (oscillators, gains, frequencies).
+- Folder structure contains other informational pages (About, Contact, Terms of Service, Privacy Policy, etc.) for SEO and AdSense readiness.
+
+## AI Agent Notes
+- Always check `../backlog.md` for pending user tasks before making structural changes.
+- Do NOT commit any code to Git unless explicitly requested by the user.
+- Wait for user input regarding AdSense Publisher IDs and Meta tags before modifying AdSense script blocks.
