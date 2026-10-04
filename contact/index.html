@@ -46,7 +46,7 @@
             padding: 80px 0 100px;
             background: var(--gray-lighter);
             position: relative;
-        }
+
 
         .contact-section::before {
             content: '';
@@ -90,9 +90,11 @@
             margin: 0 auto;
         }
 
+        .form-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px; }
+
         .contact-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.5fr;
             gap: 40px;
             animation: fadeInUp 0.8s ease-out;
         }
@@ -245,6 +247,10 @@
             .contact-content {
                 grid-template-columns: 1fr;
             }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
         }
         
         @media (max-width: 768px) {
@@ -307,7 +313,7 @@
                     to help!</p>
             </div>
 
-            <div class="contact-content" style="grid-template-columns: 1fr 1.5fr; gap: 40px; margin-top: 50px;">
+            <div class="contact-content" style="margin-top: 50px;">
                 <!-- Contact Information (Left Side) -->
                 <div class="contact-info" style="display: flex; flex-direction: column; gap: 20px;">
                     <h2>We'd love to hear from you.</h2>
@@ -361,7 +367,7 @@
                     <form id="contactForm">
                         <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 24px;">Send Us a Quick Message</h2>
                         
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-row">
                             <div class="form-group" style="margin-bottom: 20px;">
                                 <label for="name">Your Name *</label>
                                 <input type="text" id="name" name="name" required placeholder="Alex Dev">
@@ -507,3 +513,7 @@
 </body>
 
 </html>
+
+
+
+
