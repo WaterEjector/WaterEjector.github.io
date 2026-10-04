@@ -588,7 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, observerOptions);
-    const elementsToAnimate = document.querySelectorAll('.content-card, .faq-item, .step-card, .stat-card, .hero-content');
+    const elementsToAnimate = document.querySelectorAll('.content-card, .faq-item, .step-card, .stat-card, .hero-content, .tip-card, .benefit-card');
     elementsToAnimate.forEach(el => {
         el.style.opacity = '0';
         observer.observe(el);
