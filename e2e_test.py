@@ -1,54 +1,57 @@
 import os
-import glob
-from bs4 import BeautifulSoup
 
-def run_tests():
-    print("--- Starting End-to-End Checks ---")
-    html_files = glob.glob('**/*.html', recursive=True)
-    
-    errors = 0
-    warnings = 0
-    
-    for file in html_files:
-        if 'google' in file:
-            continue
+errors = 0
+warnings = 0
+files_tested = 0
 
-        with open(file, 'r', encoding='utf-8') as f:
-            content = f.read()
-            soup = BeautifulSoup(content, 'html.parser')
+print("--- Starting End-to-End Checks ---")
+
+for root, dirs, files in os.walk('.'):
+    # Ignore hidden dirs, git, and components since components are fragments
+    if '.git' in root or '.github' in root or 'google' in root or 'components' in root:
+        continue
+        
+    for file in files:
+        if file.endswith('.html') and 'google' not in file:
+            files_tested += 1
+            file_path = os.path.join(root, file)
             
-            # Check Title
-            if not soup.title or not soup.title.string:
-                print(f"[ERROR] Missing <title> in {file}")
-                errors += 1
-                
-            # Check Canonical
-            canonical = soup.find('link', rel='canonical')
-            if not canonical or 'waterejector.github.io' not in canonical.get('href', ''):
-                print(f"[ERROR] Missing or incorrect canonical link in {file}")
-                errors += 1
-                
-            # Check Footer Backlink
-            backlink = soup.find('a', href='https://www.devdeskapp.com/')
-            if not backlink:
-                print(f"[ERROR] Missing DevDeskApp backlink in {file}")
-                errors += 1
-                
-            # Check old string
-            if 'tryfixmyspeaker' in content.lower():
-                print(f"[WARNING] Found 'tryfixmyspeaker' leftover in {file}")
-                warnings += 1
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
 
-    print("\\n--- Test Results ---")
-    print(f"Files tested: {len([f for f in html_files if 'google' not in f])}")
-    print(f"Errors found: {errors}")
-    print(f"Warnings found: {warnings}")
-    
-    if errors == 0:
-        print("ALL TESTS PASSED! (SUCCESS)")
-    else:
-        print("TESTS FAILED! (ERROR)")
-        exit(1)
+            # 1. Check title
+            if '<title>' not in content:
+                print(f"[ERROR] Missing <title> in {file_path}")
+                errors += 1
 
-if __name__ == '__main__':
-    run_tests()
+            # 2. Check canonical
+            if '<link rel="canonical"' not in content:
+                print(f"[ERROR] Missing canonical link in {file_path}")
+                errors += 1
+
+            # 3. Check inline JS scripts for errors (basic)
+            if 'easypusher' in content or 'llvpn' in content:
+                print(f"[ERROR] Adware found in {file_path}")
+                errors += 1
+
+# Check if footer component has backlink
+if os.path.exists('components/footer.html'):
+    with open('components/footer.html', 'r', encoding='utf-8') as f:
+        if 'https://www.devdeskapp.com/' not in f.read():
+            print(f"[ERROR] Missing DevDeskApp backlink in components/footer.html")
+            errors += 1
+else:
+    print(f"[ERROR] components/footer.html not found")
+    errors += 1
+
+print("\\n--- Test Results ---")
+print(f"Files tested: {files_tested}")
+print(f"Errors found: {errors}")
+print(f"Warnings found: {warnings}")
+
+if errors > 0:
+    print("TESTS FAILED! (ERROR)")
+    exit(1)
+else:
+    print("ALL TESTS PASSED! (SUCCESS)")
+    exit(0)

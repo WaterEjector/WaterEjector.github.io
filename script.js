@@ -40,16 +40,24 @@ const NEXT_STEPS = {
     secondaryText: "Run Vibration Again",
   },
 };
-document.addEventListener("DOMContentLoaded", () => {
+
+async function initApp() {
+  await loadComponents();
   setupEventListeners();
-  setupMobileMenu();
   setupFAQ();
   setupSmoothScroll();
   const activeModeBtn = document.querySelector("button.mode-btn.active");
   if (activeModeBtn) {
     currentMode = activeModeBtn.dataset.mode;
   }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initApp);
+} else {
+    initApp();
+}
+
 function initializeAudioContext() {
   if (audioContext) return true;
   try {
@@ -64,32 +72,44 @@ function initializeAudioContext() {
     return false;
   }
 }
+
 function setupEventListeners() {
   const startBtn = document.getElementById("startBtn");
   const stopBtn = document.getElementById("stopBtn");
-  if (!startBtn || !stopBtn) return;
   const modeBtns = document.querySelectorAll("button.mode-btn");
-  modeBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      modeBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentMode = btn.dataset.mode;
-    });
-  });
   const speakerBtns = document.querySelectorAll(".speaker-btn");
-  speakerBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      speakerBtns.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      currentSpeaker = btn.dataset.speaker;
+
+  if (modeBtns) {
+    modeBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        modeBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentMode = btn.dataset.mode;
+      });
     });
-  });
-  startBtn.addEventListener("click", startCleaning);
-  stopBtn.addEventListener("click", () => {
-    const stoppedMode = currentMode;
-    stopCleaning();
-    showNextStep(stoppedMode, true);
-  });
+  }
+
+  if (speakerBtns) {
+    speakerBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        speakerBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentSpeaker = btn.dataset.speaker;
+      });
+    });
+  }
+
+  if (startBtn) {
+    startBtn.addEventListener("click", startCleaning);
+  }
+  
+  if (stopBtn) {
+    stopBtn.addEventListener("click", () => {
+      const stoppedMode = currentMode;
+      stopCleaning();
+      showNextStep(stoppedMode, true);
+    });
+  }
 }
 async function startCleaning() {
   if (isPlaying) return;
@@ -376,23 +396,39 @@ function updateUIState(playing) {
         `;
   }
 }
+
+
 function setupMobileMenu() {
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const navLinks = document.getElementById("navLinks");
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener("click", () => {
+  
+  if (mobileMenuBtn && navLinks) {
+    const newBtn = mobileMenuBtn.cloneNode(true);
+    mobileMenuBtn.parentNode.replaceChild(newBtn, mobileMenuBtn);
+    
+    newBtn.addEventListener("click", () => {
       navLinks.classList.toggle("active");
-      mobileMenuBtn.classList.toggle("active");
     });
-    const links = navLinks.querySelectorAll("a");
+
+    const links = navLinks.querySelectorAll("a:not(.dropdown-toggle)");
     links.forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("active");
-        mobileMenuBtn.classList.remove("active");
       });
     });
   }
+
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+          if (window.innerWidth <= 768) {
+              e.preventDefault();
+              toggle.parentElement.classList.toggle('active');
+          }
+      });
+  });
 }
+
 function setupFAQ() {
   const faqQuestions = document.querySelectorAll(".faq-question");
   faqQuestions.forEach((question) => {
@@ -519,3 +555,245 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+let stereoPanner = null;
+const startStereoBtn = document.getElementById("startStereoBtn");
+if (startStereoBtn) {
+  const speakerBtns = document.querySelectorAll(".speaker-btn");
+  let currentPan = 0; 
+
+  speakerBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      speakerBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentPan = parseFloat(btn.getAttribute("data-pan"));
+      if (stereoPanner) {
+        stereoPanner.pan.value = currentPan;
+      }
+    });
+  });
+
+  startStereoBtn.addEventListener("click", async () => {
+    if (isPlaying) {
+      stopCleaning();
+      startStereoBtn.textContent = "Play Test Sound";
+      document.getElementById("stereoProgress").style.display = "none";
+      return;
+    }
+    
+    if (!initializeAudioContext()) return;
+    if (audioContext.state === "suspended") await audioContext.resume();
+    
+    isPlaying = true;
+    startStereoBtn.textContent = "Stop Test Sound";
+    document.getElementById("stereoProgress").style.display = "block";
+    
+    stopAllAudio();
+    oscillator = audioContext.createOscillator();
+    gainNode = audioContext.createGain();
+
+    stereoPanner = audioContext.createStereoPanner();
+    stereoPanner.pan.value = currentPan;
+
+    oscillator.type = "sine";
+    oscillator.frequency.value = 400; 
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(stereoPanner);
+    stereoPanner.connect(audioContext.destination);
+    
+    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+    gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.1);
+    
+    oscillator.start();
+  });
+}
+
+const freqSlider = document.getElementById("freqSlider");
+const freqDisplay = document.getElementById("freqDisplay");
+const startFreqBtn = document.getElementById("startFreqBtn");
+
+if (freqSlider && startFreqBtn) {
+  freqSlider.addEventListener("input", (e) => {
+    const val = e.target.value;
+    freqDisplay.textContent = val;
+    if (isPlaying && oscillator) {
+      oscillator.frequency.setValueAtTime(val, audioContext.currentTime);
+    }
+  });
+
+  startFreqBtn.addEventListener("click", async () => {
+    if (isPlaying) {
+      stopCleaning();
+      startFreqBtn.textContent = "Play Frequency";
+      return;
+    }
+    
+    if (!initializeAudioContext()) return;
+    if (audioContext.state === "suspended") await audioContext.resume();
+    
+    isPlaying = true;
+    startFreqBtn.textContent = "Stop Frequency";
+    
+    stopAllAudio();
+    oscillator = audioContext.createOscillator();
+    gainNode = audioContext.createGain();
+    
+    oscillator.type = "sine";
+    oscillator.frequency.value = parseFloat(freqSlider.value);
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+    gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.1);
+    
+    oscillator.start();
+  });
+}
+
+const startTimerBtn = document.getElementById("startTimerBtn");
+const timerDisplay = document.getElementById("timerDisplay");
+let timerInterval;
+
+if (startTimerBtn && timerDisplay) {
+  startTimerBtn.addEventListener("click", () => {
+    if (startTimerBtn.textContent.includes("Stop")) {
+      clearInterval(timerInterval);
+      timerDisplay.textContent = "30:00";
+      startTimerBtn.textContent = "Start 30-Minute Timer";
+      return;
+    }
+    
+    startTimerBtn.textContent = "Stop Timer";
+    let timeLeft = 30 * 60; 
+    
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        timerDisplay.textContent = "00:00";
+        startTimerBtn.textContent = "Start 30-Minute Timer";
+        alert("30 Minutes completed. You can try checking your charging port now.");
+        return;
+      }
+      
+      const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+      const s = (timeLeft % 60).toString().padStart(2, '0');
+      timerDisplay.textContent = `${m}:${s}`;
+    }, 1000);
+  });
+}
+
+const recordBtn = document.getElementById("recordBtn");
+const recordBtnText = document.getElementById("recordBtnText");
+const micProgress = document.getElementById("micProgress");
+const micProgressBar = document.getElementById("micProgressBar");
+const playbackContainer = document.getElementById("playbackContainer");
+const audioPlayback = document.getElementById("audioPlayback");
+let mediaRecorder;
+let audioChunks = [];
+
+if (recordBtn) {
+  recordBtn.addEventListener("click", async () => {
+
+    if (recordBtn.classList.contains("recording")) return;
+    
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+      
+      mediaRecorder.ondataavailable = (event) => {
+        audioChunks.push(event.data);
+      };
+      
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        audioPlayback.src = audioUrl;
+
+        stream.getTracks().forEach(track => track.stop());
+        
+        recordBtn.classList.remove("recording");
+        recordBtnText.textContent = "Start Recording (5s)";
+        micProgress.style.display = "none";
+        playbackContainer.style.display = "block";
+      };
+
+      playbackContainer.style.display = "none";
+      recordBtn.classList.add("recording");
+      recordBtnText.textContent = "Recording... Speak Now!";
+      micProgress.style.display = "block";
+      
+      mediaRecorder.start();
+
+      let width = 0;
+      micProgressBar.style.width = "0%";
+      const progressInt = setInterval(() => {
+        width += 2; 
+        micProgressBar.style.width = width + "%";
+        if (width >= 100) clearInterval(progressInt);
+      }, 100);
+
+      setTimeout(() => {
+        if (mediaRecorder.state === "recording") {
+          mediaRecorder.stop();
+        }
+      }, 5000);
+      
+    } catch (err) {
+      alert("Microphone access denied or not available on this device. Please check your browser permissions.");
+    }
+  });
+}
+
+function setupThemeToggle() {
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    if (!themeToggleBtn) return;
+    const iconSun = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`;
+    const iconMoon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>`;
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeToggleBtn.innerHTML = theme === 'dark' ? iconSun : iconMoon;
+    }
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (prefersDark) {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
+
+    const newBtn = themeToggleBtn.cloneNode(true);
+    themeToggleBtn.parentNode.replaceChild(newBtn, themeToggleBtn);
+    newBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+}
+
+
+
+async function loadComponents() {
+  try {
+    const [headerRes, footerRes] = await Promise.all([
+      fetch('/components/header.html'),
+      fetch('/components/footer.html')
+    ]);
+    
+    if (headerRes.ok) {
+      document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+    }
+    if (footerRes.ok) {
+      document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+    }
+    
+    // Re-initialize UI scripts that depend on the navbar
+      } catch (error) {
+    console.error("Error loading components:", error);
+  }
+}

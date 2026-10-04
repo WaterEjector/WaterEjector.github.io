@@ -2306,3 +2306,82 @@ tbody tr:hover td:nth-child(2) {
     background: var(--surface);
     border-color: var(--gray-light);
 }
+
+/* --- NEW TOOLS UI --- */
+#freqSlider {
+    -webkit-appearance: none;
+    height: 8px;
+    background: var(--gray-light);
+    border-radius: 4px;
+    outline: none;
+}
+#freqSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+#recordBtn.recording {
+    background: #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+    animation: pulseRed 1.5s infinite;
+}
+@keyframes pulseRed {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* --- DROPDOWN MENU FOR TOOLS --- */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: var(--surface);
+    min-width: 180px;
+    box-shadow: var(--shadow-lg);
+    border-radius: 8px;
+    z-index: 1000;
+    list-style: none;
+    padding: 10px 0;
+    margin-top: 5px;
+    border: 1px solid var(--gray-light);
+}
+.dropdown-menu li a {
+    color: var(--text-primary);
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+.dropdown-menu li a:hover {
+    background-color: var(--primary-muted);
+    color: var(--primary-color);
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+/* Fix mobile menu display */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding-left: 20px;
+    }
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+}
