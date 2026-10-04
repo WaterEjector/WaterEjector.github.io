@@ -1,3 +1,10 @@
+(function initEarlyTheme() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+
 let audioContext;
 let oscillator;
 let gainNode;
@@ -13,7 +20,7 @@ const NEXT_STEPS = {
       "Still hearing muffled sound? Dust in the speaker grill is the most common cause.",
     stoppedTitle: "Water eject stopped",
     stoppedMessage:
-      "A full 60-second pass works best. Restart it — or if the sound seems dusty rather than wet, try a deep dust clean.",
+      "A full 60-second pass works best. Restart it - or if the sound seems dusty rather than wet, try a deep dust clean.",
     primaryText: "Run Deep Dust Clean",
     primaryHref: "/deep-clean/",
     secondaryText: "Run Water Eject Again",
@@ -44,7 +51,10 @@ const NEXT_STEPS = {
 async function initApp() {
   await loadComponents();
   setupEventListeners();
+  setupMobileMenu();
+  setupThemeToggle();
   setupFAQ();
+  setupCookieBanner();
   setupSmoothScroll();
   const activeModeBtn = document.querySelector("button.mode-btn.active");
   if (activeModeBtn) {
@@ -403,29 +413,38 @@ function setupMobileMenu() {
   const navLinks = document.getElementById("navLinks");
   
   if (mobileMenuBtn && navLinks) {
-    const newBtn = mobileMenuBtn.cloneNode(true);
-    mobileMenuBtn.parentNode.replaceChild(newBtn, mobileMenuBtn);
-    
-    newBtn.addEventListener("click", () => {
+    mobileMenuBtn.onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      mobileMenuBtn.classList.toggle("active");
       navLinks.classList.toggle("active");
-    });
+    };
 
     const links = navLinks.querySelectorAll("a:not(.dropdown-toggle)");
     links.forEach((link) => {
       link.addEventListener("click", () => {
+        mobileMenuBtn.classList.remove("active");
         navLinks.classList.remove("active");
       });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenuBtn.classList.remove("active");
+        navLinks.classList.remove("active");
+      }
     });
   }
 
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   dropdownToggles.forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
-          if (window.innerWidth <= 768) {
-              e.preventDefault();
-              toggle.parentElement.classList.toggle('active');
-          }
-      });
+    toggle.onclick = (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggle.parentElement.classList.toggle('active');
+      }
+    };
   });
 }
 
@@ -530,30 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(el);
     });
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    if (!themeToggleBtn) return;
-    const iconSun = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`;
-    const iconMoon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>`;
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        themeToggleBtn.innerHTML = theme === 'dark' ? iconSun : iconMoon;
-    }
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else if (prefersDark) {
-        setTheme('dark');
-    } else {
-        setTheme('light');
-    }
-    themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    });
-});
+
 
 let stereoPanner = null;
 const startStereoBtn = document.getElementById("startStereoBtn");
@@ -750,37 +746,35 @@ if (recordBtn) {
 
 
 function setupThemeToggle() {
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    if (!themeToggleBtn) return;
-    
-    const iconSun = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>`;
-    const iconMoon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>`;
-    
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        const activeBtn = document.getElementById('themeToggleBtn');
-        if (activeBtn) {
-            activeBtn.innerHTML = theme === 'dark' ? iconSun : iconMoon;
-        }
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  if (!themeToggleBtn) return;
+  
+  function updateThemeUI(theme) {
+    const sun = themeToggleBtn.querySelector('.sun-icon');
+    const moon = themeToggleBtn.querySelector('.moon-icon');
+    if (sun && moon) {
+      if (theme === 'dark') {
+        sun.style.display = 'block';
+        moon.style.display = 'none';
+      } else {
+        sun.style.display = 'none';
+        moon.style.display = 'block';
+      }
     }
-    
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else if (prefersDark) {
-        setTheme('dark');
-    } else {
-        setTheme('light');
-    }
-    
-    // Use onclick to prevent duplicate bindings if setup runs multiple times
-    themeToggleBtn.onclick = () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    };
+  }
+
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+  updateThemeUI(currentTheme);
+
+  themeToggleBtn.onclick = (e) => {
+    e.preventDefault();
+    const activeTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', activeTheme);
+    localStorage.setItem('theme', activeTheme);
+    updateThemeUI(activeTheme);
+  };
 }
+
 async function loadComponents() {
   try {
     const [headerRes, footerRes] = await Promise.all([
@@ -789,14 +783,43 @@ async function loadComponents() {
     ]);
     
     if (headerRes.ok) {
-      document.getElementById('header-placeholder').innerHTML = await headerRes.text();
+      const headerPlaceholder = document.getElementById('header-placeholder');
+      if (headerPlaceholder) {
+        headerPlaceholder.innerHTML = await headerRes.text();
+      }
     }
     if (footerRes.ok) {
-      document.getElementById('footer-placeholder').innerHTML = await footerRes.text();
+      const footerPlaceholder = document.getElementById('footer-placeholder');
+      if (footerPlaceholder) {
+        footerPlaceholder.innerHTML = await footerRes.text();
+      }
     }
     
-    // Re-initialize UI scripts that depend on the navbar
-      } catch (error) {
+    setupMobileMenu();
+    setupThemeToggle();
+  } catch (error) {
     console.error("Error loading components:", error);
   }
+}
+
+
+function setupCookieBanner() {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('acceptCookies');
+    
+    if (banner && acceptBtn) {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            banner.style.display = 'flex';
+        } else {
+            banner.style.display = 'none';
+        }
+        
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            banner.style.opacity = '0';
+            setTimeout(() => {
+                banner.style.display = 'none';
+            }, 300);
+        });
+    }
 }

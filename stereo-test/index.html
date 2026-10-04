@@ -1,29 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Test your earbuds, headphones, or phone speakers for left/right balance issues. Play sound specifically in one ear to find broken speakers.">
     <meta name="keywords" content="stereo test, left right audio test, airpods quieter in one ear, earbud balance, speaker balance, left right sound test">
     <title>Left/Right Stereo Audio Tester | WaterEjector</title>
-    <link rel="canonical" href="https://waterejector.github.io/stereo-test/">
+    <link rel="canonical" href="https://waterejector.github.io/{folder}/">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#8B5CF6">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/style.css?v=1791111903">
-    <!-- Self-hosted Inter (variable, 400-800). Preloaded so it starts
-         downloading alongside the CSS instead of after it. -->
+    <link rel="stylesheet" href="/style.css?v=1791121342">
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2136229145694242"
-        crossorigin="anonymous"></script>
-    <!-- Google tag (gtag.js). The library is 165KB and competes with first
-         paint, so the calls are queued into dataLayer immediately and the
-         library itself is fetched once the page has painted (or sooner, on
-         the first user interaction). No events are lost — dataLayer buffers
-         them until gtag.js arrives. -->
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2136229145694242" crossorigin="anonymous"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -46,10 +39,22 @@
             else addEventListener('load', load);
         })();
     </script>
-
     <meta name="google-adsense-account" content="ca-pub-2136229145694242">
+    
+    <!-- Schema.org Markup for Generative AI & Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Stereo Balance Tester",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": "Test left and right audio channels for earbuds and phone speakers."
+    }
+    </script>
+    
 </head>
-
 <body>
     <div id="header-placeholder"></div>
 
@@ -59,102 +64,40 @@
             <div class="hero-content">
                 <h1 class="hero-title">Left / Right Stereo Tester</h1>
                 <p class="hero-subtitle">Test if one of your AirPods, earbuds, or phone speakers is quieter than the other due to water or earwax.</p>
-</div>
+            </div>
 
-            <!-- Speaker Cleaner Tool -->
+            <!-- Tool Container -->
             <div class="tool-container">
                 <div class="tool-card">
                     <div class="tool-header">
-                        <h2>Why Test Your Stereo Balance?</h2>
-<p>After dropping your phone or earbuds in water, it is very common for only one side to become muffled. By isolating the sound to the Left or Right channel, you can easily diagnose whether the issue is hardware damage, or if it just needs a good cleaning.</p>
+                        <h2>Stereo Balance Test</h2>
+                        <p>Select an ear to play the diagnostic sound</p>
                     </div>
-
-                    <!-- Mode Selection -->
-                    <div class="mode-selection">
-                        <a href="/" class="mode-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-                            </svg>
-                            <span>Eject Water</span>
-                        </a>
-                        <button class="mode-btn active" data-mode="dust">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="12" cy="12" r="6"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                            </svg>
-                            <span>Remove Dust</span>
-                        </button>
-                        <a href="/vibration/" class="mode-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="2" width="6" height="20" rx="2"></rect>
-                                <path d="M3 8v8M6 5v14M18 5v14M21 8v8"></path>
-                            </svg>
-                            <span>Vibration</span>
-                        </a>
-                    </div>
-
-                    <!-- Speaker Selection -->
-                    <div class="speaker-selection">
-                        <button class="speaker-btn active" data-speaker="both">
-                            <span>Both Speakers</span>
-                        </button>
-                        <button class="speaker-btn" data-speaker="left">
-                            <span>Left Speaker</span>
-                        </button>
-                        <button class="speaker-btn" data-speaker="right">
-                            <span>Right Speaker</span>
-                        </button>
-                    </div>
-
-                    <!-- Progress Bar -->
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
+                    
+                    <div class="tool-controls" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="flex-wrap-mobile" style="display: flex; gap: 10px; justify-content: center;">
+                            <button class="speaker-btn active" data-pan="-1" id="leftSpeakerBtn" style="flex: 1; padding: 15px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                                Left Ear
+                            </button>
+                            <button class="speaker-btn" data-pan="0" id="bothSpeakerBtn" style="flex: 1; padding: 15px;">
+                                Both
+                            </button>
+                            <button class="speaker-btn" data-pan="1" id="rightSpeakerBtn" style="flex: 1; padding: 15px;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                                Right Ear
+                            </button>
                         </div>
-                        <div class="progress-text">
-                            <span id="progressPercent">0%</span>
-                            <span id="statusText">Ready to clean</span>
+                        <button class="btn btn-primary btn-large" id="startStereoBtn" style="width: 100%;">Play Test Sound</button>
+                        <div class="progress-container" style="display: none;" id="stereoProgress">
+                            <div class="status-text" style="text-align: center; margin-top: 15px; font-weight: 600; color: var(--primary-color);">Playing sound...</div>
                         </div>
                     </div>
-
-                    <!-- Control Buttons -->
-                    <div class="control-buttons">
-                        <button class="btn btn-primary" id="startBtn">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
-                            <span>Start Cleaning</span>
-                        </button>
-                        <button class="btn btn-secondary" id="stopBtn" disabled>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <rect x="6" y="6" width="12" height="12" rx="2" />
-                            </svg>
-                            <span>Stop</span>
-                        </button>
-                    </div>
-
-                    <!-- Volume Warning -->
-                    <div class="warning-box">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
-                            </path>
-                            <line x1="12" y1="9" x2="12" y2="13"></line>
-                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                        </svg>
-                        <p><strong>Important:</strong> Turn volume to maximum and hold your phone with the speaker
-                            facing down so loosened dust falls out.</p>
-                    </div>
+        
                 </div>
             </div>
-
-            <!-- Ad: below tool -->
-            <div class="ad-container under-tool">
+            
+            <div class="ad-container under-tool" style="margin-top: 40px;">
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2136229145694242"
                     data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
                     data-full-width-responsive="true"></ins>
@@ -163,164 +106,115 @@
         </div>
     </section>
 
-    <!-- How Deep Clean Works -->
+    <!-- Content Section -->
     <section class="content-section">
         <div class="container">
             <div class="section-header">
-                <h2>How the Deep Dust Clean Works</h2>
-                <p>Six frequencies, one pass — from deep bass to high treble</p>
-                <!-- Ad: below tool -->
-                <div class="ad-container under-tool">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2136229145694242"
-                        data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
-                        data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
+                <h2>Why Test Your Stereo Balance?</h2>
+                <p>Important information regarding this tool</p>
             </div>
-
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 12h3l3-9 4 18 3-9h3"></path>
-                        </svg>
-                    </div>
-                    <h3>Frequency Sweep</h3>
-                    <p>Unlike the standard water eject tone, the deep clean cycles through six frequencies from 200Hz
-                        up to 1500Hz, spending ten seconds on each. This band is where the speaker diaphragm moves the
-                        most, so each step physically shakes debris of a different size loose from the speaker mesh.</p>
-                </div>
-                <div class="content-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 6v6l4 2"></path>
-                        </svg>
-                    </div>
-                    <h3>When to Use It</h3>
-                    <p>Run a deep clean when your speaker sounds muffled or quieter than it used to, when calls sound
-                        distant, or after the standard water eject didn't fully restore clarity. Pocket lint and dust
-                        build up gradually, so a monthly pass keeps sound crisp.</p>
-                </div>
-                <div class="content-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 6L9 17l-5-5"></path>
-                        </svg>
-                    </div>
-                    <h3>Getting the Best Result</h3>
-                    <p>Set volume to maximum, remove any case, and point the speaker grill downward. For stubborn
-                        build-up, run the sweep two or three times back to back — each pass shakes out a little more.
-                        Finish with a soft dry brush across the grill if dust is visible.</p>
-                </div>
+            
+            <div class="content-card">
+                
+            <p>After dropping your phone or earbuds in water, it's very common for only one side to become muffled or quiet. Sometimes it's water damage, and other times it's just earwax buildup blocking the speaker grill.</p>
+            <p>By using this tool to play sound exclusively in your Left or Right channel, you can easily figure out which speaker is struggling. If you find out that one speaker is definitely blocked, you can head back to our <a href="/" class="text-link">main Water Eject tool</a> to blast the water out, or check out our sponsor <a href="https://www.devdeskapp.com/" target="_blank" rel="noopener" class="text-link">DevDesk App</a> for more awesome tech tools.</p>
+        
             </div>
-            <!-- Ad: below content -->
-            <div class="ad-container under-tool">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2136229145694242"
-                    data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
-                    data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
+            
         </div>
     </section>
 
-    <!-- Maintenance Guide -->
-    <section class="content-section">
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
         <div class="container">
             <div class="section-header">
-                <h2>Keep Every Speaker in Your Life Clean</h2>
-                <div class="ad-container under-tool">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2136229145694242"
-                        data-ad-slot="5532898439" data-ad-format="rectangle,horizontal"
-                        data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
-                <p>Maintenance tips for your phone, earbuds and accessories</p>
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions from our users</p>
             </div>
-
-            <div class="content-grid">
-                <div class="content-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                            <path
-                                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
-                            </path>
-                        </svg>
+            <div class="faq-container">
+                
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Why is my right earbud quieter than my left?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>This usually happens due to earwax buildup on the speaker mesh, or water getting trapped inside. Try cleaning the mesh gently with a dry toothbrush, or use our deep dust cleaner tool to vibrate the debris out.</p>
+                        </div>
                     </div>
-                    <h3>Earbuds and Bluetooth Speakers Too</h3>
-                    <p>Wireless earbuds collect ear wax and pocket lint even faster than phone speakers. Connect your
-                        TWS earbuds or Bluetooth speaker to this page and run the same frequency sweep — the tones
-                        play through whatever device is connected, shaking dust out of the driver mesh. A monthly pass
-                        keeps earbuds sounding new and saves replacing a pair that just needed cleaning.</p>
-                </div>
-                <div class="content-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="5" y="2" width="14" height="20" rx="2"></rect>
-                            <path d="M12 18h.01"></path>
-                        </svg>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can this tool fix my broken speaker?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>This specific tool is just for diagnosing the problem (finding out which speaker is broken). To actually fix it, use the main water ejection mode on our homepage.</p>
+                        </div>
                     </div>
-                    <h3>Prevent Dust Before It Settles</h3>
-                    <p>Most speaker dust comes from pockets and bags. A case with raised edges around the speaker
-                        cutouts, keeping the phone in a separate pocket from keys and tissues, and an occasional pass
-                        with a soft dry brush over the grill all slow the build-up. Avoid compressed air and pins —
-                        both push debris deeper into the mesh and can tear the speaker membrane.</p>
-                </div>
-                <div class="content-card">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
-                            </path>
-                        </svg>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How do I fix the left-right audio imbalance on my phone?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sometimes it is a software issue. Go to your phone's Accessibility Settings > Audio/Visual and ensure the audio balance slider is exactly in the middle.</p>
+                        </div>
                     </div>
-                    <h3>When the Speaker Needs Repair</h3>
-                    <p>If audio is still low or crackly after several deep cleans, the speaker itself may be worn out
-                        — drivers degrade after years of maximum-volume use. Phone speaker replacement at a service
-                        centre usually costs ₹800–₹3,000 depending on the model, which is worth weighing against the
-                        phone's age. Get a quote before assuming you need a new phone; a speaker swap is one of the
-                        cheapest repairs there is.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ad: end of content -->
-    <div class="container">
-        <div class="ad-container-section">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2136229145694242"
-                data-ad-slot="5532898439" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-    </div>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Speaker Still Not Clear?</h2>
-                <p>If sound is still muffled after a deep clean, trapped water may be the cause — run the standard
-                    water eject or try vibration mode</p>
-                <a href="/" class="btn btn-primary btn-large">Run Water Eject</a>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can Bluetooth interference cause one earbud to stop working?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, temporary Bluetooth syncing issues can cause audio to drop in one ear. Try unpairing and resetting your wireless earbuds.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Why does my speaker sound distorted when I play the test sound?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Distortion usually points to hardware damage (a blown speaker) or severe water/dust blockage. Try our deep cleaning tool.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Will this test work for both iPhone and Android?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! Our stereo balance tester uses web standards and works seamlessly across all operating systems and web browsers.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What if my laptop speakers fail the stereo test?</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>If your laptop is failing, ensure no audio-enhancing software (like spatial audio) is overriding your balance settings.</p>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
 
     <div id="footer-placeholder"></div>
-
-    <script defer src="/script.js?v=1791112460"></script>
-
-    
-    
-
+    <script defer src="/script.js?v=1791121342"></script>
 </body>
-
 </html>
-
