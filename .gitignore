@@ -38,6 +38,7 @@ build/
 *.tmp
 *.temp
 *.py
+!e2e_test.py
 *.pyc
 __pycache__/
 
