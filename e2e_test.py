@@ -62,7 +62,7 @@ def run_tests():
             errors += 1
 
         # Canonical link
-        if not re.search(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://waterejector\.github\.io/', content):
+        if not re.search(r'<link\s+rel=["\']canonical["\']\s+href=["\']https://waterejector\.devdeskapp\.com/', content):
             print(f"[ERROR] Missing or invalid canonical in {rel_p}")
             errors += 1
 
@@ -151,7 +151,7 @@ def run_tests():
     if os.path.exists(robots_p):
         with open(robots_p, 'r', encoding='utf-8') as f:
             rc = f.read()
-        if "User-agent: *" in rc and "Sitemap: https://waterejector.github.io/sitemap.xml" in rc:
+        if "User-agent: *" in rc and "Sitemap: https://waterejector.devdeskapp.com/sitemap.xml" in rc:
             print(" [OK] robots.txt verified")
         else:
             print("[ERROR] robots.txt missing User-agent or Sitemap directive")

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://waterejector.github.io/sitemap.xml
+Sitemap: https://waterejector.devdeskapp.com/sitemap.xml
