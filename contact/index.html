@@ -9,11 +9,17 @@
     <title>Contact Us - WaterEjector</title>
     <link rel="canonical" href="https://waterejector.github.io/contact/">
     <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="/style.css?v=1791121342">
+    <link rel="stylesheet" href="/style.css?v=1791126560">
     <!-- Self-hosted Inter (variable, 400-800). Preloaded so it starts
          downloading alongside the CSS instead of after it. -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#8B5CF6">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="/icon-192.png">
     <!-- Google tag (gtag.js). The library is 165KB and competes with first
          paint, so the calls are queued into dataLayer immediately and the
          library itself is fetched once the page has painted (or sooner, on
@@ -261,6 +267,15 @@
     </style>
 
     <meta name="google-adsense-account" content="ca-pub-2136229145694242">
+    <!-- Schema.org Markup for Generative AI & Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact WaterEjector Support",
+      "description": "Contact the WaterEjector engineering team for help with phone speaker water damage and inquiries."
+    }
+    </script>
 </head>
 
 <body>
@@ -380,7 +395,7 @@
 
     <div id="footer-placeholder"></div>
 
-    <script defer src="/script.js?v=1791121342"></script>
+    <script defer src="/script.js?v=1791126560"></script>
     <script>
         // Contact form handling with FormSubmit AJAX
         document.getElementById('contactForm').addEventListener('submit', async function (e) {

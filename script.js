@@ -46,6 +46,39 @@ const NEXT_STEPS = {
     primaryHref: "/",
     secondaryText: "Run Vibration Again",
   },
+  stereo: {
+    title: "Stereo Balance Test Complete!",
+    message:
+      "Is one speaker or earbud quieter? Trapped water or earwax is often the culprit. Try our primary Water Ejector to clear it out.",
+    stoppedTitle: "Stereo Test Paused",
+    stoppedMessage:
+      "Speaker test paused. If your audio sounded muffled or uneven on either channel, run our water ejection cycle.",
+    primaryText: "Run Water Ejector",
+    primaryHref: "/",
+    secondaryText: "Test Sound Again",
+  },
+  frequency: {
+    title: "Custom Frequency Complete!",
+    message:
+      "Did this frequency shake out the water? Finish with a standard water eject cycle for the clearest sound.",
+    stoppedTitle: "Frequency Tone Stopped",
+    stoppedMessage:
+      "Frequency playback stopped. If you found the optimal resonance frequency, run our standard water eject pass.",
+    primaryText: "Run Standard Clean",
+    primaryHref: "/",
+    secondaryText: "Play Frequency Again",
+  },
+  port: {
+    title: "30-Minute Drying Completed!",
+    message:
+      "Your charging port has air-dried for 30 minutes. You can now safely plug in your cable to check if the warning is gone.",
+    stoppedTitle: "Drying Timer Paused",
+    stoppedMessage:
+      "Port drying paused. We strongly recommend letting it air-dry for at least 30 minutes before attempting to charge.",
+    primaryText: "Test Speakers Next",
+    primaryHref: "/",
+    secondaryText: "Resume Timer",
+  },
 };
 
 async function initApp() {
@@ -56,6 +89,7 @@ async function initApp() {
   setupFAQ();
   setupCookieBanner();
   setupSmoothScroll();
+  setupPWA();
   const activeModeBtn = document.querySelector("button.mode-btn.active");
   if (activeModeBtn) {
     currentMode = activeModeBtn.dataset.mode;
@@ -361,7 +395,18 @@ function showNextStep(mode, stopped) {
   });
   overlay.querySelector("#runAgainBtn").addEventListener("click", () => {
     hideNextStep();
-    startCleaning();
+    const stereoBtn = document.getElementById("startStereoBtn");
+    const freqBtn = document.getElementById("startFreqBtn");
+    const timerBtn = document.getElementById("startTimerBtn");
+    if (stereoBtn) {
+      stereoBtn.click();
+    } else if (freqBtn) {
+      freqBtn.click();
+    } else if (timerBtn) {
+      timerBtn.click();
+    } else {
+      startCleaning();
+    }
   });
   document.addEventListener("keydown", closeNextStepOnEscape);
   document.body.appendChild(overlay);
@@ -573,6 +618,7 @@ if (startStereoBtn) {
       stopCleaning();
       startStereoBtn.textContent = "Play Test Sound";
       document.getElementById("stereoProgress").style.display = "none";
+      showNextStep("stereo", true);
       return;
     }
     
@@ -621,6 +667,7 @@ if (freqSlider && startFreqBtn) {
     if (isPlaying) {
       stopCleaning();
       startFreqBtn.textContent = "Play Frequency";
+      showNextStep("frequency", true);
       return;
     }
     
@@ -657,6 +704,7 @@ if (startTimerBtn && timerDisplay) {
       clearInterval(timerInterval);
       timerDisplay.textContent = "30:00";
       startTimerBtn.textContent = "Start 30-Minute Timer";
+      showNextStep("port", true);
       return;
     }
     
@@ -670,7 +718,7 @@ if (startTimerBtn && timerDisplay) {
         clearInterval(timerInterval);
         timerDisplay.textContent = "00:00";
         startTimerBtn.textContent = "Start 30-Minute Timer";
-        alert("30 Minutes completed. You can try checking your charging port now.");
+        showNextStep("port", false);
         return;
       }
       
@@ -823,3 +871,150 @@ function setupCookieBanner() {
         });
     }
 }
+
+// ==========================================
+// PWA INSTALLATION & SERVICE WORKER
+// ==========================================
+let deferredInstallPrompt = null;
+
+// Catch beforeinstallprompt early
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+
+  const navBtn = document.getElementById('navInstallBtn');
+  if (navBtn) navBtn.style.display = 'inline-flex';
+
+  triggerPWAPrompt(false);
+});
+
+window.addEventListener('appinstalled', () => {
+  const banner = document.getElementById('pwaInstallBanner');
+  if (banner) {
+    banner.classList.remove('show');
+    setTimeout(() => banner.remove(), 400);
+  }
+  const navBtn = document.getElementById('navInstallBtn');
+  if (navBtn) navBtn.style.display = 'none';
+  localStorage.setItem('pwa_installed', 'true');
+  deferredInstallPrompt = null;
+});
+
+function triggerPWAPrompt(isManualClick = false) {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                       window.navigator.standalone === true;
+  if (isStandalone) return;
+
+  const dismissedTime = localStorage.getItem('pwa_dismissed_time');
+  const now = Date.now();
+  if (!isManualClick && dismissedTime && (now - parseInt(dismissedTime, 10)) < 24 * 3600 * 1000) {
+    return;
+  }
+
+  if (document.getElementById('pwaInstallBanner')) return;
+
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  const banner = document.createElement('div');
+  banner.id = 'pwaInstallBanner';
+  banner.className = 'pwa-install-banner';
+
+  if (isIOS) {
+    banner.innerHTML = `
+      <div class="pwa-install-card">
+        <div class="pwa-app-icon">
+          <img src="/icon-192.png" alt="WaterEjector App Icon" width="46" height="46">
+        </div>
+        <div class="pwa-info">
+          <div class="pwa-title">Install WaterEjector App</div>
+          <div class="pwa-subtitle">Tap <span class="ios-share-badge">Share ⎋</span> then select <strong>'Add to Home Screen' ➕</strong></div>
+        </div>
+        <div class="pwa-actions">
+          <button id="pwaCloseBtn" class="btn btn-primary btn-pwa-install">Got It</button>
+        </div>
+      </div>
+    `;
+  } else {
+    banner.innerHTML = `
+      <div class="pwa-install-card">
+        <div class="pwa-app-icon">
+          <img src="/icon-192.png" alt="WaterEjector App Icon" width="46" height="46">
+        </div>
+        <div class="pwa-info">
+          <div class="pwa-title">Install WaterEjector App</div>
+          <div class="pwa-subtitle">Instant offline access • Eject water & clean speaker anytime</div>
+        </div>
+        <div class="pwa-actions">
+          <button id="pwaInstallBtn" class="btn-pwa-install">Install App</button>
+          <button id="pwaCloseBtn" class="btn-pwa-close" aria-label="Close">&times;</button>
+        </div>
+      </div>
+    `;
+  }
+
+  document.body.appendChild(banner);
+
+  setTimeout(() => {
+    banner.classList.add('show');
+  }, isManualClick ? 60 : 1500);
+
+  const installBtn = banner.querySelector('#pwaInstallBtn');
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        const { outcome } = await deferredInstallPrompt.userChoice;
+        if (outcome === 'accepted') {
+          banner.classList.remove('show');
+          setTimeout(() => banner.remove(), 400);
+        }
+        deferredInstallPrompt = null;
+      } else {
+        alert('To install WaterEjector:\n- On Chrome/Edge: Click the install icon (⊕) in the browser address bar.\n- On Mobile: Tap browser menu (⋮) and select "Install app" or "Add to Home Screen".');
+        banner.classList.remove('show');
+        setTimeout(() => banner.remove(), 400);
+      }
+    });
+  }
+
+  const closeBtn = banner.querySelector('#pwaCloseBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      banner.classList.remove('show');
+      localStorage.setItem('pwa_dismissed_time', Date.now().toString());
+      setTimeout(() => banner.remove(), 400);
+    });
+  }
+}
+
+function setupPWA() {
+  // 1. Register Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').then(() => {
+        // SW registered successfully
+      }).catch((err) => {
+        console.warn('SW registration failed:', err);
+      });
+    });
+  }
+
+  // 2. Setup Header install button
+  const navBtn = document.getElementById('navInstallBtn');
+  if (navBtn) {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                         window.navigator.standalone === true;
+    if (!isStandalone) {
+      navBtn.style.display = 'inline-flex';
+      navBtn.addEventListener('click', () => {
+        triggerPWAPrompt(true);
+      });
+    }
+  }
+
+  // 3. Auto-prompt on initial page load if not in standalone and not dismissed
+  setTimeout(() => {
+    triggerPWAPrompt(false);
+  }, 2000);
+}
+

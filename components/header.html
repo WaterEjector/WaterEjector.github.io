@@ -2,10 +2,25 @@
     <div class="container">
         <div class="nav-wrapper">
             <a href="/" class="logo">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2.5a4.5 4.5 0 0 0-4.5 4.5c0 3.5 4.5 10 4.5 10s4.5-6.5 4.5-10a4.5 4.5 0 0 0-4.5-4.5z"></path>
-                    <path d="M12 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
+                <svg viewBox="0 0 48 48" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 8px; flex-shrink: 0;">
+                    <defs>
+                        <linearGradient id="wePurpleLogo" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#9333EA"/>
+                            <stop offset="50%" stop-color="#8B5CF6"/>
+                            <stop offset="100%" stop-color="#4F46E5"/>
+                        </linearGradient>
+                        <linearGradient id="weWaterLogo" x1="28" y1="12" x2="40" y2="30" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#38BDF8"/>
+                            <stop offset="100%" stop-color="#06B6D4"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="3" y="3" width="42" height="42" rx="13" fill="url(#wePurpleLogo)"/>
+                    <rect x="4" y="4" width="40" height="40" rx="12" stroke="rgba(255,255,255,0.25)" stroke-width="1.2"/>
+                    <path d="M12 20H16L21 15V33L16 28H12C11.45 28 11 27.55 11 27V21C11 20.45 11.45 20 12 20Z" fill="#FFFFFF"/>
+                    <path d="M25 19.5C26.3 20.8 27 22.3 27 24C27 25.7 26.3 27.2 25 28.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M29 16C31.2 18.2 32.5 21 32.5 24C32.5 27 31.2 29.8 29 32" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"/>
+                    <path d="M35.5 14C35.5 14 39.5 19.5 39.5 22.5C39.5 24.9 37.7 26.8 35.5 26.8C33.3 26.8 31.5 24.9 31.5 22.5C31.5 19.5 35.5 14 35.5 14Z" fill="url(#weWaterLogo)"/>
+                    <ellipse cx="34.2" cy="21.5" rx="1.2" ry="1.8" transform="rotate(-20 34.2 21.5)" fill="#FFFFFF" fill-opacity="0.8"/>
                 </svg>
                 <span>WaterEjector</span>
             </a>
@@ -32,6 +47,14 @@
             </ul>
 
             <div class="nav-actions">
+                <button class="nav-install-btn" id="navInstallBtn" aria-label="Install App" style="display: none;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Install</span>
+                </button>
                 <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Dark Mode">
                     <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"></circle>
