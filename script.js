@@ -466,10 +466,7 @@ function setupSmoothScroll() {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden && isPlaying) {
-  }
-});
+document.addEventListener("visibilitychange", () => { if (document.hidden && isPlaying) { stopCleaning(); } });
 window.addEventListener("beforeunload", () => {
   stopCleaning();
   if (audioContext) {
@@ -521,3 +518,4 @@ document.addEventListener("DOMContentLoaded", () => {
         setTheme(currentTheme === 'dark' ? 'light' : 'dark');
     });
 });
+
