@@ -1,5 +1,9 @@
 # WaterEjector - Clean & Eject Water Instantly 💦🔊
 
+[![Live Site](https://img.shields.io/badge/Live%20Website-waterejector.devdeskapp.com-8B5CF6?style=for-the-badge&logo=google-chrome&logoColor=white)](https://waterejector.devdeskapp.com/)
+
+**Live Website:** [https://waterejector.devdeskapp.com/](https://waterejector.devdeskapp.com/)
+
 WaterEjector is an advanced, free web-based tool designed to help you safely eject water and remove dust from your smartphone speakers using specific high-frequency sound waves.
 
 ## Features ✨
@@ -34,7 +38,8 @@ WaterEjector is an advanced, free web-based tool designed to help you safely eje
 
 ## Deployment 🌐
 This project is configured with a GitHub Actions workflow (`.github/workflows/deploy.yml`). 
-Any changes pushed or merged into the `master` or `main` branch will automatically trigger a build and deploy the site to **GitHub Pages**.
+Any changes merged into the `main` branch automatically build and deploy to **GitHub Pages** at:  
+👉 **[https://waterejector.devdeskapp.com/](https://waterejector.devdeskapp.com/)**
 
 ## License 📄
 &copy; 2026 WaterEjector. All rights reserved. | Supported by [DevDesk App](https://www.devdeskapp.com/).
