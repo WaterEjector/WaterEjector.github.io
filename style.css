@@ -3144,3 +3144,100 @@ tbody tr:hover td:nth-child(2) {
     }
 }
 
+/* ======================================= */
+/* BUY ME A COFFEE (TIP & DONATION BUTTONS) */
+/* ======================================= */
+.nav-bmc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FFDD00;
+    color: #000000 !important;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-bmc-btn:hover {
+    background: #FBBF24;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.35);
+    color: #000000 !important;
+}
+
+.footer-bmc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFDD00;
+    color: #000000 !important;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.footer-bmc-btn:hover {
+    background: #FBBF24;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(251, 191, 36, 0.4);
+    color: #000000 !important;
+}
+
+.next-step-bmc {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--gray-light, #e2e8f0);
+    text-align: center;
+}
+
+.next-step-bmc-text {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.next-step-bmc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #FFDD00;
+    color: #000000 !important;
+    padding: 9px 18px;
+    border-radius: 24px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 3px 10px rgba(255, 221, 0, 0.3);
+}
+
+.next-step-bmc-btn:hover {
+    background: #FBBF24;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(251, 191, 36, 0.45);
+    color: #000000 !important;
+}
+
+@media (max-width: 480px) {
+    .nav-bmc-btn span {
+        display: none;
+    }
+    .nav-bmc-btn {
+        padding: 6px 8px;
+        border-radius: 50%;
+    }
+}
+
+

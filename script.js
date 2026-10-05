@@ -382,6 +382,14 @@ function showNextStep(mode, stopped) {
                 <a href="${step.primaryHref}" class="btn btn-primary">${step.primaryText}</a>
                 <button type="button" class="btn btn-secondary" id="runAgainBtn">${step.secondaryText}</button>
             </div>
+            ${!stopped ? `
+            <div class="next-step-bmc">
+                <p class="next-step-bmc-text">Sound clearer? Support keeping this tool 100% free:</p>
+                <a href="https://buymeacoffee.com/gd2042000d" target="_blank" rel="noopener noreferrer" class="next-step-bmc-btn" aria-label="Buy me a coffee">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+                    <span>Buy me a coffee</span>
+                </a>
+            </div>` : ""}
         </div>
     `;
   overlay.addEventListener("click", (e) => {
