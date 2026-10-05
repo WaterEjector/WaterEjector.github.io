@@ -1,0 +1,101 @@
+# WaterEjector - Complete Technical Knowledge Base & Documentation
+
+> Complete flattened plain-text context for LLMs, AI agents, and search crawlers covering all tools, algorithms, recovery procedures, and acoustic specifications.
+
+Website: https://waterejector.devdeskapp.com/
+Platform: Web-based client-side progressive web application
+Target Devices: iOS (iPhone, iPad, Apple Watch), Android smartphones and tablets, macOS, Windows, Linux, Chromebooks.
+Audio Architecture: W3C Web Audio API (AudioContext, OscillatorNode, GainNode, StereoPannerNode, MediaRecorder).
+
+---
+
+## 1. System Overview & Technology Stack
+
+WaterEjector is an online audio engineering toolkit designed to resolve hardware acoustic issues resulting from water ingress, dust accumulation, channel imbalance, and port moisture detection.
+
+### Technical Principles:
+1. Acoustic Wave Ejection: Acoustic energy generated at resonant frequencies creates rapid cyclical air pressure pulses behind speaker grilles, overcoming surface tension forces that bind liquid droplets to acoustic mesh.
+2. Zero Installation & High Privacy: All audio oscillators, frequency synthesizers, timers, and microphone tests execute 100% locally inside the user's browser client via the Web Audio API. No voice recordings or telemetry are transmitted or stored remotely.
+3. Universal Accessibility: Self-hosted Inter variable typography, responsive CSS grid architecture, and offline Progressive Web App (PWA) caching via Service Worker (`sw.js`).
+
+---
+
+## 2. Audio Tools Breakdown
+
+### Tool 1: Water Eject (Main Homepage)
+- URL: https://waterejector.devdeskapp.com/
+- Primary Frequency: 165Hz pulsed low-frequency square and sine hybrid wave.
+- Mechanism: 165Hz matches the physical resonant displacement point of typical smartphone bottom loudspeakers (iPhone, Samsung Galaxy, Google Pixel, Xiaomi, OnePlus). When played at 100% volume with the device tilted speaker-down, the vibrating speaker diaphragm acts as a miniature mechanical air pump, propelling trapped water droplets outwards through the exterior mesh holes.
+- Recommended Procedure:
+  1. Unplug charging cables and remove thick protective cases.
+  2. Increase device media volume to maximum (100%).
+  3. Turn the phone so the speaker openings face downward onto an absorbent cloth or paper towel.
+  4. Trigger the water eject sound cycle for 30 to 60 seconds.
+  5. Repeat 2 to 3 times if audio remains muffled.
+
+### Tool 2: Deep Clean (Dust & Debris Removal)
+- URL: https://waterejector.devdeskapp.com/deep-clean/
+- Primary Frequency: Dual-band sweeping sub-bass (80Hz to 250Hz).
+- Mechanism: Dry particles such as fine desert sand, construction dust, and compressed pocket lint become statically or mechanically trapped against speaker mesh. Low-frequency sound sweep vibrations shake the mesh rapidly, breaking electrostatic adhesion and dislodging debris without damaging delicate waterproof membranes.
+- Advantage over Physical Brushes: Toothbrushes and needles often push dust deeper into the voice-coil gap or puncture internal acoustic scrims. Acoustic agitation dislodges debris from the inside out.
+
+### Tool 3: Vibration Mode
+- URL: https://waterejector.devdeskapp.com/vibration/
+- Mechanism: Combines an 80Hz audio vibration wave with device haptic motor excitation (via the HTML5 Vibration API where supported).
+- Best Use Cases: Persistent micro-droplets that resist acoustic air pressure alone, or devices with dual-speaker configurations where physical chassis shaking assists droplet release.
+
+### Tool 4: Left / Right Stereo Tester
+- URL: https://waterejector.devdeskapp.com/stereo-test/
+- Technology: W3C StereoPannerNode (-1.0 Left to +1.0 Right hard panning).
+- Diagnostic Purpose: Eliminates psychoacoustic masking by isolating audio reproduction to one channel at a time. Allows users to test wireless earbuds (Apple AirPods, Galaxy Buds, Sony WF series), wired headphones, and smartphone stereo speaker arrays.
+- Common Symptoms Diagnosed:
+  - Water-damped driver diaphragm in one earbud after workouts or rain.
+  - Compacted earwax on one earbud mesh.
+  - Accidental off-center balance slider adjustments in iOS/Android accessibility settings.
+  - Broken solder connections or fraying 3.5mm auxiliary cables.
+
+### Tool 5: Custom Frequency Generator
+- URL: https://waterejector.devdeskapp.com/frequency-generator/
+- Frequency Spectrum: Continuous 1Hz to 20,000Hz pure mathematical sine wave synthesis.
+- Key Applications:
+  - Custom resonance tuning: Smaller acoustic chambers (such as the top ear speaker on smartphones or Apple Watch speaker ports) have smaller diaphragms that resonate best between 300Hz and 450Hz rather than standard 165Hz.
+  - Subwoofer & Room Acoustics: Discovering bass nulls, room boundary reflections, and mechanical rattle frequencies.
+  - Voice Coil Distortion: Detecting voice-coil rubbing that only manifests at specific discrete pitches.
+  - Hearing Upper Limit Check: Testing high-pitch perception (12kHz to 20kHz).
+
+### Tool 6: Liquid in Charging Port Fix
+- URL: https://waterejector.devdeskapp.com/charging-port-fix/
+- Purpose: Emergency procedural guide and calibrated 30-minute evaporation timer for "Liquid Detected in Lightning Connector" (iPhone) or "Moisture Detected in USB Port" (Android).
+- Critical Technical Advisory:
+  - Why Immediate Charging Is Dangerous: Applying 15W to 100W electrical current across wet connector pins triggers rapid electrolysis within seconds, stripping gold plating and causing permanent green copper corrosion.
+  - Why Rice Is Harmful: Raw rice does not extract deep capillary moisture. Rice starch enters damp port cavities, creating an insulating gummy cement that ruins contact pins.
+  - Safe Recovery Protocol: Unplug immediately, tap gently against palm with port facing down, and allow passive room-temperature airflow for 30 to 120 minutes.
+
+### Tool 7: Online Microphone Tester
+- URL: https://waterejector.devdeskapp.com/mic-test/
+- Technology: HTML5 MediaRecorder and AudioContext with 5-second in-memory audio capture and playback.
+- Privacy Architecture: Zero cloud transmission. Captured voice buffers exist exclusively in local browser RAM and are purged immediately when the tab closes.
+- Diagnostic Purpose: Testing voice clarity when callers report muffled or "underwater" speech. Identifies whether liquid or lint is sealing the bottom 0.5mm microphone hole, and differentiates between primary talk microphone failures and rear camera noise-cancellation mic issues.
+
+---
+
+## 3. Informational & Legal Pages
+
+- About Page (https://waterejector.devdeskapp.com/about/): Explains acoustic wave history, the engineering science of frequency-based liquid ejection, and the development mission.
+- Contact Support (https://waterejector.devdeskapp.com/contact/): Direct contact form and support channels for hardware questions and bug reports.
+- Privacy Policy (https://waterejector.devdeskapp.com/privacy-policy/): Comprehensive transparency statement verifying client-side audio operations, cookie handling, and zero collection of personal or voice data.
+- Terms of Service (https://waterejector.devdeskapp.com/terms-of-service/): User guidelines, intellectual property terms, and service warranty boundaries.
+- Safety Disclaimer (https://waterejector.devdeskapp.com/disclaimer/): Important guidance on maintaining safe listening volume and seeking authorized hardware repairs for devices submerged in salt or chlorinated water.
+
+---
+
+## 4. Frequently Asked Questions (AI Reference)
+
+Q: Can sound waves genuinely eject water from phone speakers?
+A: Yes. Smartphone speakers operate via an electromagnetic voice coil driving a diaphragm. When fed a low-frequency square or sine wave at maximum volume, the diaphragm undergoes large physical excursions, compressing air within the speaker cavity and propelling droplets through the acoustic mesh.
+
+Q: Is this safe for device speakers?
+A: Yes. The frequencies utilized (specifically 165Hz and 80Hz) are well within the standard operating frequency range of mobile audio transducers and will not blow out undamaged speakers.
+
+Q: What should I do if my phone fell into saltwater or sugary drinks?
+A: Saltwater and beverages leave corrosive crystals when dried. If the phone is water-resistant (IP67/IP68), briefly rinse the exterior with clean fresh tap water, shake gently downward, and immediately execute the water ejection sequence before salt crystals can solidify.

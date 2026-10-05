@@ -1,19 +1,27 @@
-# WaterEjector Project
+# WaterEjector
 
-This repository contains a static Single Page Application (SPA) utility called WaterEjector. It helps users eject water and remove dust from their device's speakers by playing specific high-frequency sound waves.
+> Free online browser audio utility to eject water, remove dust, and restore crystal-clear speaker sound across smartphones, tablets, smartwatches, and headphones.
 
-## Technology Stack
-- HTML5
-- CSS3 (Vanilla, CSS Variables for theming)
-- JavaScript (Vanilla, Web Audio API)
+WaterEjector provides specialized acoustic frequency tools, haptic vibration modes, and diagnostic utilities using the standard W3C Web Audio API to solve water damage, speaker muffling, port moisture warnings, and channel imbalances without software installation.
 
-## Architecture
-- `index.html`: The main page with the tool interface.
-- `style.css`: Contains all styles including the premium Gold color theme.
-- `script.js`: Handles UI interactions and the Web Audio API logic (oscillators, gains, frequencies).
-- Folder structure contains other informational pages (About, Contact, Terms of Service, Privacy Policy, etc.) for SEO and AdSense readiness.
+## Core Audio Tools
 
-## AI Agent Notes
-- Always check `../backlog.md` for pending user tasks before making structural changes.
-- Do NOT commit any code to Git unless explicitly requested by the user.
-- Wait for user input regarding AdSense Publisher IDs and Meta tags before modifying AdSense script blocks.
+- [Water Eject](https://waterejector.devdeskapp.com/): Primary 165Hz pulsed acoustic tone generator designed to break surface tension and eject water droplets from smartphone loudspeakers.
+- [Deep Clean Dust Remover](https://waterejector.devdeskapp.com/deep-clean/): Ultra-low frequency acoustic sweeping tool that dislodges dry dust, sand particles, and compacted pocket lint from speaker grilles.
+- [Vibration Mode](https://waterejector.devdeskapp.com/vibration/): 80Hz mechanical haptic oscillation combined with audio vibration to physically shake stubborn moisture out of phone speakers.
+- [Left / Right Stereo Tester](https://waterejector.devdeskapp.com/stereo-test/): Dual-channel audio isolation utility to diagnose volume disparities, blocked earbud grilles, and driver polarity issues.
+- [Custom Frequency Generator](https://waterejector.devdeskapp.com/frequency-generator/): Full-range sine wave generator from 1Hz to 20,000Hz for custom resonant frequency tuning, subwoofer testing, and hearing range checks.
+- [Liquid in Charging Port Fix](https://waterejector.devdeskapp.com/charging-port-fix/): Emergency guidance and 30-minute calibrated evaporation countdown timer for the "Liquid Detected in Lightning Connector" or "Moisture Detected in USB Port" warning.
+- [Online Microphone Tester](https://waterejector.devdeskapp.com/mic-test/): Client-side 5-second voice recording and playback diagnostic to check microphone clarity, background noise, and water blockage.
+
+## Documentation and Transparency
+
+- [About WaterEjector](https://waterejector.devdeskapp.com/about/): Background information on acoustic wave ejection technology, engineering principles, and team mission.
+- [Contact Support](https://waterejector.devdeskapp.com/contact/): Troubleshooting assistance, feedback submission, and technical support.
+- [Privacy Policy](https://waterejector.devdeskapp.com/privacy-policy/): Privacy standards confirming 100% client-side audio processing without data collection.
+- [Terms of Service](https://waterejector.devdeskapp.com/terms-of-service/): Terms governing safe usage of online sound tools and hardware disclaimers.
+- [Safety Disclaimer](https://waterejector.devdeskapp.com/disclaimer/): Safety advice regarding volume levels and severe physical water damage recovery.
+
+## Optional
+
+- [Full Content Digest](https://waterejector.devdeskapp.com/llms-full.txt): Complete, consolidated plain-text knowledge base of all tools, procedures, and technical specifications for deep LLM ingestion.
