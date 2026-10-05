@@ -382,7 +382,7 @@ function showNextStep(mode, stopped) {
                 <a href="${step.primaryHref}" class="btn btn-primary">${step.primaryText}</a>
                 <button type="button" class="btn btn-secondary" id="runAgainBtn">${step.secondaryText}</button>
             </div>
-            ${!stopped ? `
+            ${/* Buy Me a Coffee (Activate later once Stripe is linked) */ false && !stopped ? `
             <div class="next-step-bmc">
                 <p class="next-step-bmc-text">Sound clearer? Support keeping this tool 100% free:</p>
                 <a href="https://buymeacoffee.com/gd2042000d" target="_blank" rel="noopener noreferrer" class="next-step-bmc-btn" aria-label="Buy me a coffee">
