@@ -2643,19 +2643,33 @@ tbody tr:hover td:nth-child(2) {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--gray-light);
+    border-radius: 14px;
+    padding: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .quick-tools-wrapper {
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Inside Hero Sections (Purple background) */
+.hero-section .quick-tools-wrapper,
+.about-hero .quick-tools-wrapper {
     background: rgba(255, 255, 255, 0.14);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.24);
-    border-radius: 14px;
-    padding: 6px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="dark"] .quick-tools-wrapper {
+[data-theme="dark"] .hero-section .quick-tools-wrapper,
+[data-theme="dark"] .about-hero .quick-tools-wrapper {
     background: rgba(30, 41, 59, 0.7);
     border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .quick-tool-tab {
@@ -2669,12 +2683,25 @@ tbody tr:hover td:nth-child(2) {
     text-decoration: none;
     font-size: 0.76rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
-    background: transparent;
+    color: var(--text-primary);
+    background: var(--surface-alt);
+    border: 1px solid var(--gray-light);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: center;
-    border: 1px solid transparent;
     line-height: 1.15;
+}
+
+[data-theme="dark"] .quick-tool-tab {
+    background: #0f172a;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
+}
+
+.hero-section .quick-tool-tab,
+.about-hero .quick-tool-tab {
+    color: rgba(255, 255, 255, 0.95);
+    background: transparent;
+    border-color: transparent;
 }
 
 .quick-tool-tab svg {
@@ -2686,9 +2713,17 @@ tbody tr:hover td:nth-child(2) {
 }
 
 .quick-tool-tab:hover {
+    color: var(--primary-color);
+    background: var(--primary-muted);
+    border-color: var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.hero-section .quick-tool-tab:hover,
+.about-hero .quick-tool-tab:hover {
     color: #ffffff;
     background: rgba(255, 255, 255, 0.22);
-    transform: translateY(-1px);
+    border-color: transparent;
 }
 
 [data-theme="dark"] .quick-tool-tab:hover {
@@ -2697,25 +2732,41 @@ tbody tr:hover td:nth-child(2) {
 }
 
 .quick-tool-tab.active {
-    background: #ffffff !important;
-    color: var(--primary-dark) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-color: #ffffff;
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35);
+    border-color: var(--primary-color) !important;
 }
 
 .quick-tool-tab.active svg {
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+.hero-section .quick-tool-tab.active,
+.about-hero .quick-tool-tab.active {
+    background: #ffffff !important;
+    color: var(--primary-dark) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #ffffff !important;
+}
+
+.hero-section .quick-tool-tab.active svg,
+.about-hero .quick-tool-tab.active svg {
     color: var(--primary-dark) !important;
     transform: scale(1.1);
 }
 
-[data-theme="dark"] .quick-tool-tab.active {
+[data-theme="dark"] .hero-section .quick-tool-tab.active,
+[data-theme="dark"] .about-hero .quick-tool-tab.active {
     background: #8B5CF6 !important;
     color: #ffffff !important;
-    border-color: #8B5CF6;
+    border-color: #8B5CF6 !important;
     box-shadow: 0 4px 14px rgba(139, 92, 246, 0.45);
 }
 
-[data-theme="dark"] .quick-tool-tab.active svg {
+[data-theme="dark"] .hero-section .quick-tool-tab.active svg,
+[data-theme="dark"] .about-hero .quick-tool-tab.active svg {
     color: #ffffff !important;
 }
 
@@ -2759,19 +2810,29 @@ tbody tr:hover td:nth-child(2) {
         font-size: 0.82rem;
         border-radius: 9px;
         min-height: 44px;
+        text-align: left;
+    }
+    .hero-section .quick-tool-tab,
+    .about-hero .quick-tool-tab {
         background: rgba(255, 255, 255, 0.09);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        text-align: left;
     }
     .quick-tool-tab svg {
         width: 17px;
         height: 17px;
     }
     .quick-tool-tab.active {
-        background: #ffffff !important;
-        border-color: #ffffff;
+        background: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        color: #ffffff !important;
     }
-    /* 7th item (Mic Test) spans full width across both columns so the 2-col grid is perfectly balanced */
+    .hero-section .quick-tool-tab.active,
+    .about-hero .quick-tool-tab.active {
+        background: #ffffff !important;
+        border-color: #ffffff !important;
+        color: var(--primary-dark) !important;
+    }
+    /* 7th item (Mic Test) spans full width across both columns */
     .quick-tool-tab:last-child {
         grid-column: 1 / -1;
         justify-content: center;
