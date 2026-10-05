@@ -484,12 +484,31 @@ function setupMobileMenu() {
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   dropdownToggles.forEach(toggle => {
     toggle.onclick = (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        e.stopPropagation();
-        toggle.parentElement.classList.toggle('active');
-      }
+      e.preventDefault();
+      e.stopPropagation();
+      const parent = toggle.parentElement;
+      const willOpen = !parent.classList.contains('active');
+      document.querySelectorAll('.dropdown.active').forEach(dd => {
+        if (dd !== parent) {
+          dd.classList.remove('active');
+          const t = dd.querySelector('.dropdown-toggle');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        }
+      });
+      parent.classList.toggle('active', willOpen);
+      toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
     };
+  });
+
+  document.addEventListener('click', (e) => {
+    const activeDropdowns = document.querySelectorAll('.dropdown.active');
+    activeDropdowns.forEach(dd => {
+      if (!dd.contains(e.target)) {
+        dd.classList.remove('active');
+        const t = dd.querySelector('.dropdown-toggle');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 }
 
@@ -845,8 +864,29 @@ async function loadComponents() {
     
     setupMobileMenu();
     setupThemeToggle();
+    highlightActiveNavTools();
   } catch (error) {
     console.error("Error loading components:", error);
+  }
+}
+
+function highlightActiveNavTools() {
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+  let isToolPage = false;
+  dropdownItems.forEach((item) => {
+    const itemPath = (item.getAttribute('href') || '').replace(/\/$/, '') || '/';
+    if (itemPath === currentPath) {
+      item.classList.add('active');
+      isToolPage = true;
+    } else {
+      item.classList.remove('active');
+    }
+  });
+
+  const dropdownToggle = document.querySelector('.dropdown-toggle');
+  if (dropdownToggle && isToolPage && currentPath !== '/') {
+    dropdownToggle.classList.add('active');
   }
 }
 

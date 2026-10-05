@@ -30,14 +30,114 @@
                 
                 <!-- Tools Dropdown for Desktop & Mobile -->
                 <li class="dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" role="button">Tools &#9662;</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/deep-clean/" class="nav-link">Deep Clean</a></li>
-                        <li><a href="/vibration/" class="nav-link">Vibration</a></li>
-                        <li><a href="/stereo-test/" class="nav-link">Stereo Test</a></li>
-                        <li><a href="/frequency-generator/" class="nav-link">Custom Hz</a></li>
-                        <li><a href="/charging-port-fix/" class="nav-link">Wet Port Fix</a></li>
-                        <li><a href="/mic-test/" class="nav-link">Mic Test</a></li>
+                    <a href="javascript:void(0)" class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span>Tools</span>
+                        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-label="Tools Menu">
+                        <li role="none">
+                            <a href="/" class="dropdown-item" role="menuitem" data-path="/">
+                                <span class="dropdown-icon-box" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                                    </svg>
+                                </span>
+                                <div class="dropdown-item-content">
+                                    <span class="dropdown-item-title">Water Eject</span>
+                                    <span class="dropdown-item-desc">165Hz Sound Ejection</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="/deep-clean/" class="dropdown-item" role="menuitem" data-path="/deep-clean/">
+                                <span class="dropdown-icon-box" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <circle cx="12" cy="12" r="6"></circle>
+                                        <circle cx="12" cy="12" r="2"></circle>
+                                    </svg>
+                                </span>
+                                <div class="dropdown-item-content">
+                                    <span class="dropdown-item-title">Deep Clean</span>
+                                    <span class="dropdown-item-desc">Speaker Dust Removal</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="/vibration/" class="dropdown-item" role="menuitem" data-path="/vibration/">
+                                <span class="dropdown-icon-box" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="2" width="6" height="20" rx="2"></rect>
+                                        <path d="M3 8v8M6 5v14M18 5v14M21 8v8"></path>
+                                    </svg>
+                                </span>
+                                <div class="dropdown-item-content">
+                                    <span class="dropdown-item-title">Vibration Mode</span>
+                                    <span class="dropdown-item-desc">80Hz Haptic Pulse</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="/stereo-test/" class="dropdown-item" role="menuitem" data-path="/stereo-test/">
+                                <span class="dropdown-icon-box" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                                    </svg>
+                                </span>
+                                <div class="dropdown-item-content">
+                                    <span class="dropdown-item-title">Stereo Test</span>
+                                    <span class="dropdown-item-desc">L / R Channel Diagnostic</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="/frequency-generator/" class="dropdown-item" role="menuitem" data-path="/frequency-generator/">
+                                <span class="dropdown-icon-box" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M2 12h3l3-9 4 18 4-9h6"></path>
+                                    </svg>
+                                </span>
+                                <div class="dropdown-item-content">
+                                    <span class="dropdown-item-title">Custom Hz</span>
+                                    <span class="dropdown-item-desc">1Hz – 20,000Hz Tone</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="/charging-port-fix/" class="dropdown-item" role="menuitem" data-path="/charging-port-fix/">
+                                <span class="dropdown-icon-box" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="7" y="10" width="10" height="12" rx="2"></rect>
+                                        <path d="M9 10V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v5"></path>
+                                        <line x1="12" y1="13" x2="12" y2="16"></line>
+                                        <path d="M12 2v1"></path>
+                                    </svg>
+                                </span>
+                                <div class="dropdown-item-content">
+                                    <span class="dropdown-item-title">Wet Port Fix</span>
+                                    <span class="dropdown-item-desc">Moisture Detected Guide</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li role="none">
+                            <a href="/mic-test/" class="dropdown-item" role="menuitem" data-path="/mic-test/">
+                                <span class="dropdown-icon-box" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                                    </svg>
+                                </span>
+                                <div class="dropdown-item-content">
+                                    <span class="dropdown-item-title">Mic Test</span>
+                                    <span class="dropdown-item-desc">Microphone Test & Clean</span>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 
