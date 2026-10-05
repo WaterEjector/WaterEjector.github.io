@@ -92,8 +92,29 @@ body {
 }
 
 /* ======================== */
-/* NAVIGATION — App-like    */
+/* NAVIGATION & STABILITY   */
 /* ======================== */
+#header-placeholder {
+    min-height: 51px;
+    display: block;
+    background: rgba(255, 255, 255, 0.97);
+}
+
+@media (max-width: 768px) {
+    #header-placeholder {
+        min-height: 47px;
+    }
+}
+
+[data-theme="dark"] #header-placeholder {
+    background: rgba(31, 41, 55, 0.97);
+}
+
+#footer-placeholder {
+    min-height: 280px;
+    display: block;
+}
+
 .navbar {
     background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(16px);
@@ -511,15 +532,19 @@ a.mode-btn {
 .ad-container {
     margin: 28px auto;
     max-width: 660px;
+    min-height: 280px;
     overflow: hidden;
     position: relative;
     z-index: 1;
+    contain: layout style;
 }
 
 .ad-container-section {
     margin: 0 auto 20px;
     max-width: 800px;
+    min-height: 280px;
     overflow: hidden;
+    contain: layout style;
 }
 
 /* Reserve the slot height up front. Responsive AdSense units render at 0px
@@ -528,6 +553,7 @@ a.mode-btn {
 .ad-container .adsbygoogle,
 .ad-container-section .adsbygoogle {
     min-height: 280px;
+    display: block;
 }
 
 /* Extra separation between the tool card and the ad below it,
@@ -1527,10 +1553,14 @@ tbody tr:hover {
     /* Ad containers */
     .ad-container {
         margin: 18px auto;
+        min-height: 250px;
+        contain: layout style;
     }
 
     .ad-container-section {
         margin: 0 auto 14px;
+        min-height: 250px;
+        contain: layout style;
     }
 
     /* Mobile responsive units land at 300x250 far more often than desktop,
@@ -1538,6 +1568,7 @@ tbody tr:hover {
     .ad-container .adsbygoogle,
     .ad-container-section .adsbygoogle {
         min-height: 250px;
+        display: block;
     }
 
     /* Stats */

@@ -36,12 +36,32 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/icon-192.png">
-    <link rel="stylesheet" href="/style.css?v=1791226117">
+    <link rel="stylesheet" href="/style.css?v=1791226824">
     <!-- Self-hosted Inter (variable, 400-800). Preloaded so it starts
          downloading alongside the CSS instead of after it. -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2136229145694242"
-        crossorigin="anonymous"></script>
+    <script>
+        (function () {
+            var adsLoaded = false;
+            function loadAds() {
+                if (adsLoaded) return;
+                adsLoaded = true;
+                var s = document.createElement('script');
+                s.async = true;
+                s.crossOrigin = 'anonymous';
+                s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2136229145694242';
+                document.head.appendChild(s);
+            }
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadAds, { timeout: 2000 });
+            } else {
+                window.addEventListener('load', function () { setTimeout(loadAds, 800); });
+            }
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (e) {
+                addEventListener(e, loadAds, { once: true, passive: true });
+            });
+        })();
+    </script>
     <!-- Google tag (gtag.js). The library is 165KB and competes with first
          paint, so the calls are queued into dataLayer immediately and the
          library itself is fetched once the page has painted (or sooner, on
@@ -385,7 +405,7 @@
 
     <div id="footer-placeholder"></div>
 
-    <script defer src="/script.js?v=1791226117"></script>
+    <script defer src="/script.js?v=1791226824"></script>
 
     
     
