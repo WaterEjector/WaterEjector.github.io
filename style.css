@@ -4535,7 +4535,7 @@ tbody tr:hover td:nth-child(2) {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 14px;
+    padding: 12px 14px 10px;
     z-index: 10;
 }
 
@@ -4543,6 +4543,8 @@ tbody tr:hover td:nth-child(2) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    pointer-events: none;
+    z-index: 12;
 }
 
 .sonic-big-score {
@@ -4581,10 +4583,17 @@ tbody tr:hover td:nth-child(2) {
     font-family: monospace;
 }
 
+/* Active Buffs Bar Positioned at TOP under Score */
 .active-buffs-bar {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    max-width: 95%;
+    pointer-events: none;
+    z-index: 15;
 }
 
 .buff-chip {
@@ -4595,30 +4604,33 @@ tbody tr:hover td:nth-child(2) {
     border-radius: 9999px;
     font-size: 0.7rem;
     font-weight: 800;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .buff-shield {
-    background: rgba(6, 182, 212, 0.25);
-    border: 1px solid #06b6d4;
+    background: rgba(6, 182, 212, 0.35);
+    border: 1.5px solid #06b6d4;
     color: #67e8f9;
 }
 
 .buff-dash {
-    background: rgba(245, 158, 11, 0.25);
-    border: 1px solid #f59e0b;
+    background: rgba(245, 158, 11, 0.35);
+    border: 1.5px solid #f59e0b;
     color: #fde68a;
 }
 
 .buff-magnet {
-    background: rgba(168, 85, 247, 0.25);
-    border: 1px solid #a855f7;
+    background: rgba(168, 85, 247, 0.35);
+    border: 1.5px solid #a855f7;
     color: #e9d5ff;
 }
 
 .buff-timer-track {
     width: 44px;
     height: 6px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.45);
     border-radius: 9999px;
     overflow: hidden;
 }
@@ -4632,6 +4644,31 @@ tbody tr:hover td:nth-child(2) {
 .sonic-tap-guide {
     font-size: 0.72rem;
     color: rgba(255, 255, 255, 0.65);
+    pointer-events: none;
+}
+
+/* Touch & Scroll Lock for Smooth Mobile Phone Gameplay */
+.game-viewport-card,
+.sonic-viewport-card,
+.canvas-wrapper,
+.sonic-canvas-wrapper,
+#gameCanvas,
+.sonic-flight-deck,
+.sonic-pulse-tap-btn,
+.mobile-controls,
+.ctrl-btn,
+.fire-btn {
+    touch-action: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    overscroll-behavior: none !important;
+}
+
+.sonic-pulse-tap-btn,
+.fire-btn,
+.ctrl-btn {
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 .sonic-overlay {

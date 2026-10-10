@@ -332,18 +332,26 @@
             };
 
             this.canvas.addEventListener('pointerdown', (e) => {
+                if (e.cancelable) e.preventDefault();
                 this.pointerActive = true;
                 handlePointer(e);
                 if (this.state === 'PLAYING' && !this.autoFire) {
                     this.shootWave();
                 }
-            });
+            }, { passive: false });
 
             this.canvas.addEventListener('pointermove', (e) => {
                 if (this.pointerActive) {
+                    if (e.cancelable) e.preventDefault();
                     handlePointer(e);
                 }
-            });
+            }, { passive: false });
+
+            this.canvas.addEventListener('touchmove', (e) => {
+                if (this.state === 'PLAYING' && e.cancelable) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
 
             const endPointer = () => { this.pointerActive = false; };
             window.addEventListener('pointerup', endPointer);

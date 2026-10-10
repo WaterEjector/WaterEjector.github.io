@@ -458,24 +458,45 @@
         }
     });
 
+    function handleTriggerJump(e) {
+        if (e) {
+            if (e.cancelable) e.preventDefault();
+            e.stopPropagation();
+        }
+        initAudio();
+        if (gameState === 'PLAYING') {
+            jumpDroplet();
+        }
+    }
+
     if (canvas) {
-        canvas.addEventListener('pointerdown', (e) => {
-            initAudio();
-            if (gameState === 'PLAYING') {
-                jumpDroplet();
+        canvas.addEventListener('pointerdown', handleTriggerJump, { passive: false });
+        canvas.addEventListener('touchstart', handleTriggerJump, { passive: false });
+        canvas.addEventListener('touchmove', (e) => {
+            if (gameState === 'PLAYING' && e.cancelable) e.preventDefault();
+        }, { passive: false });
+    }
+
+    const gameWrapper = document.getElementById('gameWrapper');
+    if (gameWrapper) {
+        gameWrapper.addEventListener('touchstart', (e) => {
+            if (gameState === 'PLAYING' && e.cancelable) {
+                e.preventDefault();
+                handleTriggerJump(e);
             }
-        });
+        }, { passive: false });
+        gameWrapper.addEventListener('touchmove', (e) => {
+            if (gameState === 'PLAYING' && e.cancelable) e.preventDefault();
+        }, { passive: false });
     }
 
     const deckPulseBtn = document.getElementById('deckPulseBtn');
     if (deckPulseBtn) {
-        deckPulseBtn.addEventListener('pointerdown', (e) => {
-            e.preventDefault();
-            initAudio();
-            if (gameState === 'PLAYING') {
-                jumpDroplet();
-            }
-        });
+        deckPulseBtn.addEventListener('pointerdown', handleTriggerJump, { passive: false });
+        deckPulseBtn.addEventListener('touchstart', handleTriggerJump, { passive: false });
+        deckPulseBtn.addEventListener('touchmove', (e) => {
+            if (e.cancelable) e.preventDefault();
+        }, { passive: false });
     }
 
     /* ==========================================================================
