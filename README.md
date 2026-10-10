@@ -22,7 +22,7 @@ WaterEjector is an advanced, free web-based tool designed to help you safely eje
 ## Local Development 🚀
 1. Clone the repository:
    ```bash
-   git clone https://github.com/WaterEjector/WaterEjector.git
+   git clone https://github.com/WaterEjector/WaterEjector.github.io.git
    ```
 2. Navigate to the project directory:
    ```bash
