@@ -14,6 +14,7 @@ WaterEjector provides specialized acoustic frequency tools, haptic vibration mod
 - [Liquid in Charging Port Fix](https://waterejector.devdeskapp.com/charging-port-fix/): Emergency guidance and 30-minute calibrated evaporation countdown timer for the "Liquid Detected in Lightning Connector" or "Moisture Detected in USB Port" warning.
 - [Online Microphone Tester](https://waterejector.devdeskapp.com/mic-test/): Client-side 5-second voice recording and playback diagnostic to check microphone clarity, background noise, and water blockage.
 - [Speaker Rescue Arcade Game](https://waterejector.devdeskapp.com/game/): Free browser mini-game simulating 165Hz acoustic shockwave physics to blast falling water droplets and dust out of smartphone speaker grilles.
+- [Sonic Droplet Ghost Challenge](https://waterejector.devdeskapp.com/sonic-droplet/): Free acoustic obstacle arcade game pulsing water droplets through speaker grille barriers with custom cosmetic skins and zero-backend ghost replay racing.
 
 ## Documentation and Transparency
 

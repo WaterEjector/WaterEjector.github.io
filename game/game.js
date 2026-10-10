@@ -1013,6 +1013,18 @@
         }
 
         shareScore() {
+            if (window.AcousticScorecard) {
+                window.AcousticScorecard.show({
+                    gameName: 'Speaker Rescue',
+                    score: this.score,
+                    bestScore: this.highScore,
+                    level: this.level,
+                    extraText: `Drops Cleaned: ${this.dropsCleaned} | Max Combo: ${this.maxCombo}x`,
+                    url: 'https://waterejector.devdeskapp.com/game/'
+                });
+                return;
+            }
+
             const off = document.createElement('canvas');
             off.width = 600;
             off.height = 600;

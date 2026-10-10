@@ -83,6 +83,12 @@ WaterEjector is an online audio engineering toolkit designed to resolve hardware
 - Gameplay & Concept: Casual educational arcade mini-game where users control a 165Hz acoustic wave emitter to blast falling water droplets and toxic dust particles before they reach the speaker voice coil. Features dynamic combos, 165Hz Super Pulse nuke, Tri-Wave Cannon, Sonic Barrier forcefield, and instant social scorecard generation.
 - Zero Dependencies: Operates 100% offline in client browser with 0KB downloaded audio assets.
 
+### Tool 9: Sonic Droplet Ghost Challenge
+- URL: https://waterejector.devdeskapp.com/sonic-droplet/
+- Technology: HTML5 Canvas 2D, Web Audio API tone synthesis, Web Audio Analyser voice jump, base64 URL replay telemetry.
+- Gameplay & Concept: Precision acoustic obstacle course where users pulse a droplet through speaker grille barriers, collect resonance pearls, unlock custom cosmetic skins, and challenge friends via P2P URL ghost replay racing without servers or logins.
+- Zero Dependencies: 100% client-side code running purely in browser with zero external libraries.
+
 ---
 
 ## 3. Informational & Legal Pages

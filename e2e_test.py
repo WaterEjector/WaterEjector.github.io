@@ -109,8 +109,8 @@ def run_tests():
         root = tree.getroot()
         ns = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
         urls = root.findall('.//ns:loc', ns) or root.findall('.//loc')
-        if len(urls) != 13:
-            print(f"[ERROR] Expected 13 URLs in sitemap, found {len(urls)}")
+        if len(urls) != 14:
+            print(f"[ERROR] Expected 14 URLs in sitemap, found {len(urls)}")
             errors += 1
         else:
             print(f" [OK] sitemap.xml verified with {len(urls)} registered URLs")
