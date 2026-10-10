@@ -1,9 +1,10 @@
-const CACHE_NAME = 'waterejector-pwa-v1';
+const CACHE_NAME = 'waterejector-pwa-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
+  '/fullscreen.js',
   '/favicon.ico',
   '/icon.svg',
   '/icon-192.png',
@@ -16,7 +17,13 @@ const ASSETS_TO_CACHE = [
   '/stereo-test/',
   '/frequency-generator/',
   '/charging-port-fix/',
-  '/mic-test/'
+  '/mic-test/',
+  '/game/',
+  '/game/index.html',
+  '/game/game.js',
+  '/sonic-droplet/',
+  '/sonic-droplet/index.html',
+  '/sonic-droplet/game.js'
 ];
 
 self.addEventListener('install', (event) => {
