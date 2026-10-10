@@ -5995,8 +5995,143 @@ body.game-fullscreen-active {
         flex: 0 0 32px;
     }
 }
+/* ==========================================================================
+   Arcade Games Showcase Section (Featured on Homepage & Tool Pages)
+   ========================================================================== */
+.arcade-showcase-section {
+    padding: 60px 0;
+    background: var(--surface);
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+}
 
+[data-theme="dark"] .arcade-showcase-section {
+    background: #0B0F19;
+    border-color: rgba(255, 255, 255, 0.08);
+}
 
+.arcade-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
 
+.arcade-showcase-card {
+    position: relative;
+    background: var(--white);
+    border: 1.5px solid var(--gray-light);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px 24px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
 
+[data-theme="dark"] .arcade-showcase-card {
+    background: #111827;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.arcade-showcase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.arcade-card-badge {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    background: rgba(139, 92, 246, 0.15);
+    color: #7c3aed;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+[data-theme="dark"] .arcade-card-badge {
+    background: rgba(139, 92, 246, 0.25);
+    color: #c4b5fd;
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+.arcade-showcase-card p {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 8px 0 16px;
+    flex-grow: 1;
+}
+
+.arcade-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.arcade-card-meta span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: var(--surface-alt);
+    border: 1px solid var(--gray-light);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .arcade-card-meta span {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+}
+
+.arcade-play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.arcade-play-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+}
+
+@media (max-width: 640px) {
+    .arcade-showcase-section {
+        padding: 40px 0;
+    }
+
+    .arcade-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .arcade-showcase-card {
+        padding: 22px 18px 18px;
+    }
+
+    .arcade-card-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 12px;
+        align-self: flex-start;
+    }
+}
 
