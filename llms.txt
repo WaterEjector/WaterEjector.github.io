@@ -13,6 +13,7 @@ WaterEjector provides specialized acoustic frequency tools, haptic vibration mod
 - [Custom Frequency Generator](https://waterejector.devdeskapp.com/frequency-generator/): Full-range sine wave generator from 1Hz to 20,000Hz for custom resonant frequency tuning, subwoofer testing, and hearing range checks.
 - [Liquid in Charging Port Fix](https://waterejector.devdeskapp.com/charging-port-fix/): Emergency guidance and 30-minute calibrated evaporation countdown timer for the "Liquid Detected in Lightning Connector" or "Moisture Detected in USB Port" warning.
 - [Online Microphone Tester](https://waterejector.devdeskapp.com/mic-test/): Client-side 5-second voice recording and playback diagnostic to check microphone clarity, background noise, and water blockage.
+- [Speaker Rescue Arcade Game](https://waterejector.devdeskapp.com/game/): Free browser mini-game simulating 165Hz acoustic shockwave physics to blast falling water droplets and dust out of smartphone speaker grilles.
 
 ## Documentation and Transparency
 

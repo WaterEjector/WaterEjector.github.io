@@ -77,6 +77,12 @@ WaterEjector is an online audio engineering toolkit designed to resolve hardware
 - Privacy Architecture: Zero cloud transmission. Captured voice buffers exist exclusively in local browser RAM and are purged immediately when the tab closes.
 - Diagnostic Purpose: Testing voice clarity when callers report muffled or "underwater" speech. Identifies whether liquid or lint is sealing the bottom 0.5mm microphone hole, and differentiates between primary talk microphone failures and rear camera noise-cancellation mic issues.
 
+### Tool 8: Speaker Rescue Arcade Game
+- URL: https://waterejector.devdeskapp.com/game/
+- Technology: HTML5 Canvas, requestAnimationFrame 60fps rendering, Web Audio API procedural sound synthesis.
+- Gameplay & Concept: Casual educational arcade mini-game where users control a 165Hz acoustic wave emitter to blast falling water droplets and toxic dust particles before they reach the speaker voice coil. Features dynamic combos, 165Hz Super Pulse nuke, Tri-Wave Cannon, Sonic Barrier forcefield, and instant social scorecard generation.
+- Zero Dependencies: Operates 100% offline in client browser with 0KB downloaded audio assets.
+
 ---
 
 ## 3. Informational & Legal Pages
