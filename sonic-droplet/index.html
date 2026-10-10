@@ -24,7 +24,7 @@
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/style.css">
 
-    <!-- Schema.org Markup for VideoGame -->
+    <!-- Schema.org Markup for VideoGame & FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -43,6 +43,51 @@
             "price": "0",
             "priceCurrency": "USD"
           }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does Ghost Replay racing work without a server or database?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "When you finish a run, tap Challenge Friend (Ghost Replay). The game compresses your exact run telemetry into a URL query parameter. When your friend opens your challenge link, their browser reads the telemetry and renders a translucent ghost flying alongside them in real time!"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I control the droplet using my voice or microphone?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! Tap the microphone icon in the top HUD to enable voice jump mode. You can whistle, speak, or blow into your device's microphone to trigger acoustic pulse jumps hands-free without touching the screen."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does playing this game physically expel water from my phone?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. While this game uses synthesized Web Audio tones inspired by our sound ejector tools, it is purely intended for casual gaming entertainment. If your real phone fell in water, visit our Water Eject Homepage, turn volume to maximum, and run the calibrated 165Hz cycle for 30–60 seconds."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I unlock custom droplet skins in the Locker?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Collect glowing resonance pearls scattered through speaker grille gaps during your flight. You can open the Skins Locker from the top HUD or main menu to unlock vibrant cosmetics like Neon Cyber, Golden Midas, Obsidian Void, and Rainbow Prism."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is Sonic Droplet Challenge completely free to play?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, 100% free! You don't need to register, create an account, or download any app from an app store. It runs instantly in Safari, Chrome, Firefox, and Edge on iPhone, Android, and PC."
+              }
+            }
+          ]
         }
       ]
     }
@@ -351,58 +396,203 @@
         </div>
     </section>
 
-    <!-- Power-Ups & How to Play Section -->
+    <!-- Power-Ups & Gameplay Abilities Section -->
     <section class="content-section">
         <div class="container">
-            <div class="article-content">
+            <div class="section-header">
+                <h2>Acoustic Power-Ups & Sonic Flight Abilities</h2>
+                <p>Collect resonance orbs and activate sonic frequencies to blast through speaker grill barriers</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon" style="background: rgba(6, 182, 212, 0.15); color: #0284c7;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Acoustic Shield</h3>
+                    <p>Absorbs a fatal grill barrier or dust mote collision, protecting your water droplet and keeping your combo multiplier streak alive.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon" style="background: rgba(245, 158, 11, 0.15); color: #d97706;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>165Hz Sonic Burst</h3>
+                    <p>Grants high-velocity invincibility that blasts directly through speaker cavity obstacles for bonus points and dramatic speed thrills.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon" style="background: rgba(168, 85, 247, 0.15); color: #9333ea;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 3v7a6 6 0 0 0 12 0V3"></path>
+                            <line x1="4" y1="7" x2="8" y2="7"></line>
+                            <line x1="16" y1="7" x2="20" y2="7"></line>
+                        </svg>
+                    </div>
+                    <h3>Resonance Magnet</h3>
+                    <p>Creates an electromagnetic suction vortex that pulls all nearby pearls directly to your droplet, speeding up cosmetic skin locker unlocks.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon" style="background: rgba(16, 185, 129, 0.15); color: #059669;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 12h8M12 8v8"></path>
+                        </svg>
+                    </div>
+                    <h3>Zero-Backend Ghost Racing</h3>
+                    <p>Challenge friends by sharing a replay link! Your flight telemetry is saved directly in the URL without requiring user accounts or database servers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section class="content-section" style="background: var(--surface);">
+        <div class="container">
+            <div class="section-header">
                 <h2>How to Play Sonic Droplet Ghost Challenge</h2>
-                <p>
-                    Sonic Droplet Challenge transforms the acoustic sound expulsion concept into an addictive precision arcade game. You guide a water droplet navigating through narrow smartphone speaker grill openings while avoiding dust hazards and collecting resonance pearls.
-                </p>
+                <p>Master fluid dynamics, voice jumps, and acoustic pulse timing</p>
+            </div>
 
-                <div class="features-grid" style="margin: 24px 0;">
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: rgba(56, 189, 248, 0.15); color: #0284c7;">🛡️</div>
-                        <h3>Acoustic Shield</h3>
-                        <p>Absorbs a fatal grill or dust collision, protecting your droplet and keeping your combo multiplier alive.</p>
+            <div class="content-grid">
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                        </svg>
                     </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: rgba(245, 158, 11, 0.15); color: #d97706;">⚡</div>
-                        <h3>165Hz Sonic Burst</h3>
-                        <p>Grants high-velocity invincibility that blasts directly through speaker barriers for bonus points.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: rgba(168, 85, 247, 0.15); color: #9333ea;">🧲</div>
-                        <h3>Resonance Magnet</h3>
-                        <p>Draws all nearby pearls directly to your droplet, accelerating your cosmetic skin locker unlocks.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: rgba(16, 185, 129, 0.15); color: #059669;">👻</div>
-                        <h3>Zero-Backend Ghost Racing</h3>
-                        <p>Challenge friends by sharing a replay link! Your flight telemetry is saved directly in the URL without requiring user accounts or servers.</p>
-                    </div>
+                    <h3>Tap or Space to Pulse Jump</h3>
+                    <p>Tap anywhere on screen or press Spacebar to fire an acoustic pulse that launches the droplet upward. Gravity pulls the droplet down, requiring steady rhythmic taps to clear narrow grill gaps.</p>
                 </div>
 
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                        </svg>
+                    </div>
+                    <h3>Hands-Free Mic Control</h3>
+                    <p>Tap the microphone icon in the top HUD to enable voice flight! Whistle, speak, or gently blow into your device's microphone to trigger pulse jumps without touching the screen.</p>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>Unlock Droplet Cosmetics</h3>
+                    <p>Collect glowing resonance pearls during runs to unlock radiant skins in the locker — from Neon Cyber and Golden Midas to Rainbow Prism. Unlocked skins stay saved in your browser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game vs Real Tool Disclaimer Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Game Disclaimer: Real Phone Speaker Cleaning</h2>
+                <p>When to play the game vs when to use our actual 165Hz sound ejector</p>
+            </div>
+
+            <div class="content-grid" style="grid-template-columns: 1fr;">
+                <div class="content-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>Casual Gaming Entertainment vs Physical Water Expulsion</h3>
+                    <p>
+                        <strong>Sonic Droplet Challenge</strong> is an arcade browser game developed strictly for casual entertainment, hand-eye reflex training, and community ghost racing. While the sound effects are synthesized using Web Audio oscillators inspired by acoustic frequencies, <em>gameplay does not physically clean or eject moisture from smartphone speaker hardware</em>.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        If your smartphone, iPhone, or Samsung device was actually dropped in water or suffers from muffled speaker sound, use our free <a href="/" style="color: var(--primary-color); font-weight: 700;">Water Eject Homepage Tool (165Hz)</a>. The actual ejector tool emits high-amplitude low-frequency sound waves that physically oscillate speaker cones to dislodge trapped liquid.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section with Interactive Accordion -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
                 <h2>Frequently Asked Questions</h2>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <h3>How does Ghost Replay racing work?</h3>
-                        <p>When you complete a run, tap <strong>Challenge Friend</strong> to generate an encoded link. When your friend opens the link, a translucent ghost of your droplet will fly beside them in real time!</p>
-                    </div>
+                <p>Common questions about Sonic Droplet Challenge, Ghost Replays, and controls</p>
+            </div>
 
-                    <div class="faq-item">
-                        <h3>Can I control the droplet using my voice or microphone?</h3>
-                        <p>Yes! Tap the microphone icon on the top bar. You can blow or vocalize into your device microphone to trigger acoustic pulse jumps hands-free.</p>
-                    </div>
-
-                    <div class="faq-item">
-                        <h3>Does playing this game expel water from my device?</h3>
-                        <p>No. While this game uses synthesized Web Audio tones inspired by our tools, it is purely intended for casual gaming entertainment. If your phone was submerged, visit our <a href="/">Water Eject tool</a> to run calibrated 165Hz ejection.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does Ghost Replay racing work without a server or database?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>When you finish a run, tap <strong>Challenge Friend (Ghost Replay)</strong>. The game compresses your exact run telemetry (positions, jumps, seed, score) into a URL query parameter. When your friend opens your challenge link, their browser reads the telemetry and renders a translucent ghost flying alongside them in real time!</p>
                     </div>
                 </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I control the droplet using my voice or microphone?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Tap the microphone icon in the top HUD to enable voice jump mode. You can whistle, speak, or blow into your device's microphone to trigger acoustic pulse jumps hands-free without touching the screen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Does playing this game physically expel water from my phone?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. While this game uses synthesized Web Audio tones inspired by our sound ejector tools, it is purely intended for casual gaming entertainment. If your real phone fell in water, visit our <a href="/" style="color: var(--primary-color); font-weight: 700;">Water Eject Homepage</a>, turn volume to maximum, and run the calibrated 165Hz cycle for 30–60 seconds.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I unlock custom droplet skins in the Locker?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Collect glowing resonance pearls scattered through speaker grille gaps during your flight. You can open the Skins Locker from the top HUD or main menu to unlock vibrant cosmetics like Neon Cyber, Golden Midas, Obsidian Void, and Rainbow Prism. Unlocked skins stay saved in your browser's local storage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is Sonic Droplet Challenge completely free to play?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, 100% free! You don't need to register, create an account, or download any app from an app store. It runs instantly in Safari, Chrome, Firefox, and Edge on iPhone, Android, and PC.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Phone Got Wet in Real Life?</h2>
+                <p>Run our calibrated 165Hz acoustic tone to physically eject trapped water from your smartphone speaker.</p>
+                <a href="/" class="btn btn-primary btn-large">Run Real Water Eject (165Hz)</a>
             </div>
         </div>
     </section>
@@ -414,8 +604,8 @@
 
     <div id="footer-placeholder"></div>
 
-    <script src="/script.js"></script>
-    <script src="/scorecard.js"></script>
-    <script src="/sonic-droplet/game.js"></script>
+    <script defer src="/script.js?v=1791231741"></script>
+    <script defer src="/scorecard.js"></script>
+    <script defer src="/sonic-droplet/game.js"></script>
 </body>
 </html>
