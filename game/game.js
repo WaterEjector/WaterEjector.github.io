@@ -325,6 +325,7 @@
             });
 
             // Smooth Direct Canvas Drag / Touch Controls
+            const isFsMode = () => document.body.classList.contains('game-fullscreen-active');
             const handlePointer = (e) => {
                 const rect = this.canvas.getBoundingClientRect();
                 const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : this.pointerX);
@@ -332,26 +333,26 @@
             };
 
             this.canvas.addEventListener('pointerdown', (e) => {
-                if (e.cancelable) e.preventDefault();
+                if (isFsMode() && e.cancelable) e.preventDefault();
                 this.pointerActive = true;
                 handlePointer(e);
                 if (this.state === 'PLAYING' && !this.autoFire) {
                     this.shootWave();
                 }
-            }, { passive: false });
+            });
 
             this.canvas.addEventListener('pointermove', (e) => {
                 if (this.pointerActive) {
-                    if (e.cancelable) e.preventDefault();
+                    if (isFsMode() && e.cancelable) e.preventDefault();
                     handlePointer(e);
                 }
-            }, { passive: false });
+            });
 
             this.canvas.addEventListener('touchmove', (e) => {
-                if (this.state === 'PLAYING' && e.cancelable) {
+                if (isFsMode() && e.cancelable) {
                     e.preventDefault();
                 }
-            }, { passive: false });
+            });
 
             const endPointer = () => { this.pointerActive = false; };
             window.addEventListener('pointerup', endPointer);

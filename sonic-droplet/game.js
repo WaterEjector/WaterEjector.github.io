@@ -458,8 +458,10 @@
         }
     });
 
+    const isFsMode = () => document.body.classList.contains('game-fullscreen-active');
+
     function handleTriggerJump(e) {
-        if (e) {
+        if (e && isFsMode()) {
             if (e.cancelable) e.preventDefault();
             e.stopPropagation();
         }
@@ -470,33 +472,21 @@
     }
 
     if (canvas) {
-        canvas.addEventListener('pointerdown', handleTriggerJump, { passive: false });
-        canvas.addEventListener('touchstart', handleTriggerJump, { passive: false });
+        canvas.addEventListener('pointerdown', handleTriggerJump);
         canvas.addEventListener('touchmove', (e) => {
-            if (gameState === 'PLAYING' && e.cancelable) e.preventDefault();
-        }, { passive: false });
-    }
-
-    const gameWrapper = document.getElementById('gameWrapper');
-    if (gameWrapper) {
-        gameWrapper.addEventListener('touchstart', (e) => {
-            if (gameState === 'PLAYING' && e.cancelable) {
-                e.preventDefault();
-                handleTriggerJump(e);
-            }
-        }, { passive: false });
-        gameWrapper.addEventListener('touchmove', (e) => {
-            if (gameState === 'PLAYING' && e.cancelable) e.preventDefault();
-        }, { passive: false });
+            if (isFsMode() && e.cancelable) e.preventDefault();
+        });
     }
 
     const deckPulseBtn = document.getElementById('deckPulseBtn');
     if (deckPulseBtn) {
-        deckPulseBtn.addEventListener('pointerdown', handleTriggerJump, { passive: false });
-        deckPulseBtn.addEventListener('touchstart', handleTriggerJump, { passive: false });
-        deckPulseBtn.addEventListener('touchmove', (e) => {
-            if (e.cancelable) e.preventDefault();
-        }, { passive: false });
+        deckPulseBtn.addEventListener('pointerdown', (e) => {
+            if (e && isFsMode() && e.cancelable) e.preventDefault();
+            initAudio();
+            if (gameState === 'PLAYING') {
+                jumpDroplet();
+            }
+        });
     }
 
     /* ==========================================================================

@@ -3522,7 +3522,7 @@ tbody tr:hover td:nth-child(2) {
     display: block;
     width: 100%;
     height: 100%;
-    touch-action: none;
+    touch-action: pan-y manipulation;
 }
 
 .grill-mesh-bar {
@@ -4714,28 +4714,49 @@ tbody tr:hover td:nth-child(2) {
     pointer-events: none;
 }
 
-/* Touch & Scroll Lock for Smooth Mobile Phone Gameplay */
+/* Touch & Gesture Controls: Allow Natural Page Scrolling in Regular Mode, Lock in Fullscreen */
 .game-viewport-card,
 .sonic-viewport-card,
 .canvas-wrapper,
 .sonic-canvas-wrapper,
-#gameCanvas,
 .sonic-flight-deck,
-.sonic-pulse-tap-btn,
-.mobile-controls,
-.ctrl-btn,
-.fire-btn {
-    touch-action: none !important;
-    -webkit-user-select: none !important;
-    user-select: none !important;
-    -webkit-touch-callout: none !important;
-    overscroll-behavior: none !important;
+.mobile-controls {
+    touch-action: pan-y manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+#gameCanvas {
+    touch-action: pan-y manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .sonic-pulse-tap-btn,
 .fire-btn,
-.ctrl-btn {
+.ctrl-btn,
+.sonic-hud-btn,
+.game-hud-action-btn {
+    touch-action: manipulation;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
     -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Fullscreen Mode: Lock touch scrolling for 100% immersive arcade gaming */
+body.game-fullscreen-active,
+.game-viewport-card.is-fullscreen,
+.sonic-viewport-card.is-fullscreen,
+.game-viewport-card.is-fullscreen #gameCanvas,
+.sonic-viewport-card.is-fullscreen #gameCanvas,
+.game-viewport-card.is-fullscreen .canvas-wrapper,
+.sonic-viewport-card.is-fullscreen .canvas-wrapper,
+.game-viewport-card.is-fullscreen .mobile-controls,
+.sonic-viewport-card.is-fullscreen .sonic-flight-deck {
+    touch-action: none !important;
+    overscroll-behavior: none !important;
 }
 
 .sonic-overlay {
