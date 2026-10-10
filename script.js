@@ -84,7 +84,6 @@ const NEXT_STEPS = {
 async function initApp() {
   await loadComponents();
   setupEventListeners();
-  setupMobileMenu();
   setupThemeToggle();
   setupFAQ();
   setupCookieBanner();
@@ -382,10 +381,10 @@ function showNextStep(mode, stopped) {
                 <a href="${step.primaryHref}" class="btn btn-primary">${step.primaryText}</a>
                 <button type="button" class="btn btn-secondary" id="runAgainBtn">${step.secondaryText}</button>
             </div>
-            ${/* Buy Me a Coffee (Activate later once Stripe is linked) */ false && !stopped ? `
+            ${!stopped ? `
             <div class="next-step-bmc">
                 <p class="next-step-bmc-text">Sound clearer? Support keeping this tool 100% free:</p>
-                <a href="https://buymeacoffee.com/gd2042000d" target="_blank" rel="noopener noreferrer" class="next-step-bmc-btn" aria-label="Buy me a coffee">
+                <a href="https://buymeacoffee.com/devdeskapp" target="_blank" rel="noopener noreferrer" class="next-step-bmc-btn" aria-label="Buy me a coffee">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
                     <span>Buy me a coffee</span>
                 </a>
@@ -465,12 +464,23 @@ function setupMobileMenu() {
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const navLinks = document.getElementById("navLinks");
   
+  function closeAllDropdowns() {
+    document.querySelectorAll('.dropdown.active').forEach(dd => {
+      dd.classList.remove('active');
+      const t = dd.querySelector('.dropdown-toggle');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    });
+  }
+
   if (mobileMenuBtn && navLinks) {
     mobileMenuBtn.onclick = (e) => {
       e.preventDefault();
       e.stopPropagation();
-      mobileMenuBtn.classList.toggle("active");
-      navLinks.classList.toggle("active");
+      const isActive = mobileMenuBtn.classList.toggle("active");
+      navLinks.classList.toggle("active", isActive);
+      if (!isActive) {
+        closeAllDropdowns();
+      }
     };
 
     const links = navLinks.querySelectorAll("a:not(.dropdown-toggle)");
@@ -478,6 +488,7 @@ function setupMobileMenu() {
       link.addEventListener("click", () => {
         mobileMenuBtn.classList.remove("active");
         navLinks.classList.remove("active");
+        closeAllDropdowns();
       });
     });
 
@@ -485,6 +496,7 @@ function setupMobileMenu() {
       if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
         mobileMenuBtn.classList.remove("active");
         navLinks.classList.remove("active");
+        closeAllDropdowns();
       }
     });
   }
@@ -494,7 +506,8 @@ function setupMobileMenu() {
     toggle.onclick = (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const parent = toggle.parentElement;
+      const parent = toggle.closest('.dropdown');
+      if (!parent) return;
       const willOpen = !parent.classList.contains('active');
       document.querySelectorAll('.dropdown.active').forEach(dd => {
         if (dd !== parent) {
@@ -505,6 +518,7 @@ function setupMobileMenu() {
       });
       parent.classList.toggle('active', willOpen);
       toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      if (typeof toggle.blur === 'function') toggle.blur();
     };
   });
 
