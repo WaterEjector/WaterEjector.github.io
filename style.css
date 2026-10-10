@@ -5457,6 +5457,457 @@ tbody tr:hover td:nth-child(2) {
     }
 }
 
+/* ==========================================================================
+   Universal Full-Screen Arcade Mode (Laptop, Android & iOS iPhone Fullscreen)
+   ========================================================================== */
+body.game-fullscreen-active {
+    overflow: hidden !important;
+    touch-action: none !important;
+}
+
+/* Fullscreen Viewport Card */
+.game-viewport-card.is-fullscreen,
+.sonic-viewport-card.is-fullscreen,
+.game-viewport-card:fullscreen,
+.sonic-viewport-card:fullscreen,
+.game-viewport-card:-webkit-full-screen,
+.sonic-viewport-card:-webkit-full-screen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh !important;
+    height: 100vh !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #080D1A !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+/* In Fullscreen, Canvas Area fills all remaining screen space dynamically */
+.game-viewport-card.is-fullscreen .canvas-wrapper,
+.sonic-viewport-card.is-fullscreen .canvas-wrapper,
+.game-viewport-card:fullscreen .canvas-wrapper,
+.sonic-viewport-card:fullscreen .canvas-wrapper,
+.game-viewport-card:-webkit-full-screen .canvas-wrapper,
+.sonic-viewport-card:-webkit-full-screen .canvas-wrapper {
+    flex: 1 1 0% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    width: 100% !important;
+}
+
+/* Fullscreen Canvas */
+.game-viewport-card.is-fullscreen #gameCanvas,
+.sonic-viewport-card.is-fullscreen #gameCanvas,
+.game-viewport-card:fullscreen #gameCanvas,
+.sonic-viewport-card:fullscreen #gameCanvas,
+.game-viewport-card:-webkit-full-screen #gameCanvas,
+.sonic-viewport-card:-webkit-full-screen #gameCanvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Fullscreen Top HUD */
+.game-viewport-card.is-fullscreen .game-hud,
+.sonic-viewport-card.is-fullscreen .sonic-top-hud,
+.game-viewport-card:fullscreen .game-hud,
+.sonic-viewport-card:fullscreen .sonic-top-hud,
+.game-viewport-card:-webkit-full-screen .game-hud,
+.sonic-viewport-card:-webkit-full-screen .sonic-top-hud {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    padding: 10px 16px !important;
+    z-index: 20 !important;
+    background: rgba(13, 19, 34, 0.98) !important;
+}
+
+/* Fullscreen Bottom Controls Deck with safe-area support for iPhones */
+.game-viewport-card.is-fullscreen .mobile-controls,
+.sonic-viewport-card.is-fullscreen .mobile-controls,
+.game-viewport-card:fullscreen .mobile-controls,
+.sonic-viewport-card:fullscreen .mobile-controls,
+.game-viewport-card:-webkit-full-screen .mobile-controls,
+.sonic-viewport-card:-webkit-full-screen .mobile-controls {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    padding: 10px 14px max(12px, env(safe-area-inset-bottom, 12px)) !important;
+    z-index: 20 !important;
+    background: rgba(13, 19, 34, 0.98) !important;
+}
+
+/* HUD Fullscreen Toggle Button (Game 1) */
+.game-hud-action-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    color: #0f172a;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.game-hud-action-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] .game-hud-action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .game-hud-action-btn:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: #a78bfa;
+    color: #ffffff;
+}
+
+/* Deck Fullscreen Button (Game 1 Bottom Controls) */
+.ctrl-btn.fs-btn-deck {
+    flex: 0 0 46px;
+    height: 56px;
+}
+
+@media (max-width: 640px) {
+    .ctrl-btn.fs-btn-deck {
+        flex: 0 0 40px;
+        height: 52px;
+    }
+}
+
+/* Floating Exit Fullscreen Button */
+.floating-fs-exit-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(15, 23, 42, 0.88);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    color: #ffffff;
+    font-size: 0.74rem;
+    font-weight: 800;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease;
+}
+
+.floating-fs-exit-btn:hover {
+    background: rgba(124, 58, 237, 0.9);
+    border-color: #c4b5fd;
+    transform: scale(1.03);
+}
+
+.floating-fs-exit-btn.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Mobile Responsiveness: All Icon + Text Elements
+   ========================================================================== */
+@media (max-width: 480px) {
+    /* 1. Mode Switcher Tabs */
+    .arcade-mode-tab {
+        padding: 8px 6px;
+        gap: 4px;
+    }
+
+    .tab-status-badge {
+        font-size: 0.54rem;
+        padding: 1px 5px;
+        letter-spacing: 0.03em;
+    }
+
+    .tab-content-row {
+        gap: 4px;
+    }
+
+    .tab-content-row svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .tab-game-title {
+        font-size: 0.68rem;
+        line-height: 1.15;
+    }
+
+    /* 2. Game 1 Controls Deck */
+    .mobile-controls {
+        padding: 6px 6px;
+        gap: 4px;
+    }
+
+    .touch-dpad {
+        gap: 4px;
+        flex: 1;
+    }
+
+    .ctrl-btn {
+        height: 48px;
+        border-radius: 8px;
+    }
+
+    .ctrl-arrow {
+        font-size: 1.1rem;
+    }
+
+    .fire-btn {
+        height: 48px;
+        padding: 0 6px;
+        gap: 6px;
+        flex: 1.4;
+        border-radius: 8px;
+    }
+
+    .fire-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .fire-btn-content span {
+        font-size: 0.72rem;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .auto-fire-toggle {
+        gap: 2px;
+        padding: 0 2px;
+    }
+
+    .auto-fire-toggle span {
+        font-size: 0.56rem;
+    }
+
+    .toggle-switch {
+        width: 30px;
+        height: 18px;
+    }
+
+    .toggle-knob {
+        width: 12px;
+        height: 12px;
+    }
+
+    .toggle-switch.active .toggle-knob {
+        transform: translateX(12px);
+    }
+
+    .ctrl-btn.mute-btn-deck,
+    .ctrl-btn.fs-btn-deck {
+        flex: 0 0 36px;
+        height: 48px;
+        padding: 0;
+    }
+
+    .ctrl-btn.mute-btn-deck svg,
+    .ctrl-btn.fs-btn-deck svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* 3. Game 1 HUD Stats */
+    .game-hud {
+        padding: 6px 8px;
+        gap: 4px;
+    }
+
+    .hud-label {
+        font-size: 0.54rem;
+        letter-spacing: 0.02em;
+    }
+
+    .hud-val {
+        font-size: 0.88rem;
+    }
+
+    .speaker-health-bar,
+    .speaker-heat-bar {
+        width: 46px;
+        height: 6px;
+    }
+
+    .game-hud-action-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .game-hud-action-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* 4. Game 2 Sonic Droplet Top Bar & Controls */
+    .sonic-top-hud {
+        padding: 8px 10px;
+        gap: 6px;
+    }
+
+    .sonic-hud-icon {
+        font-size: 1.1rem;
+    }
+
+    .sonic-brand-text strong {
+        font-size: 0.74rem;
+    }
+
+    .sonic-brand-text small {
+        display: none;
+    }
+
+    .sonic-hud-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .sonic-hud-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .pearl-counter-pill {
+        padding: 3px 6px;
+        font-size: 0.68rem;
+        gap: 2px;
+    }
+
+    .sonic-pulse-tap-btn {
+        height: 50px;
+        gap: 8px;
+        padding: 0 10px;
+    }
+
+    .sonic-pulse-tap-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .tap-btn-label strong {
+        font-size: 0.76rem;
+    }
+
+    .tap-btn-label small {
+        font-size: 0.58rem;
+    }
+
+    /* 5. Frequency Mode Buttons */
+    .freq-btn-group {
+        gap: 5px;
+    }
+
+    .freq-mode-btn {
+        padding: 6px 2px;
+        border-radius: 8px;
+    }
+
+    .freq-mode-btn span {
+        font-size: 0.68rem;
+    }
+
+    .freq-mode-btn small {
+        font-size: 0.58rem;
+    }
+
+    /* 6. Guide Cards */
+    .how-to-play-grid {
+        gap: 5px;
+        margin: 6px 0 12px;
+    }
+
+    .guide-card {
+        padding: 6px 3px;
+        gap: 1px;
+    }
+
+    .guide-card-icon {
+        font-size: 1.15rem;
+    }
+
+    .guide-card-title {
+        font-size: 0.68rem;
+    }
+
+    .guide-card-text {
+        font-size: 0.58rem;
+        line-height: 1.15;
+    }
+
+    /* 7. Active Buff Chips */
+    .buff-chip {
+        font-size: 0.58rem;
+        padding: 2px 6px;
+        gap: 3px;
+    }
+
+    /* 8. Cross Promo Card */
+    .game-cross-promo {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+
+    .cross-promo-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .cross-promo-title {
+        font-size: 0.84rem;
+    }
+
+    .cross-promo-desc {
+        font-size: 0.72rem;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Ultra-compact phones (e.g. Galaxy Fold outer screen, iPhone SE) */
+    .tab-game-title {
+        font-size: 0.62rem;
+    }
+
+    .fire-btn-content span {
+        font-size: 0.66rem;
+    }
+
+    .tap-btn-label strong {
+        font-size: 0.7rem;
+    }
+
+    .tap-btn-label small {
+        display: none;
+    }
+
+    .ctrl-btn.mute-btn-deck,
+    .ctrl-btn.fs-btn-deck {
+        flex: 0 0 32px;
+    }
+}
+
+
 
 
 
